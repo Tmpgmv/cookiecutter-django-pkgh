@@ -7,6 +7,9 @@
 ## Экзаменационная работа `{{ cookiecutter.project_name_rus }}`
 Выполнил: {{ cookiecutter.student_full_name_rus_rus }}
 
+{{ cookiecutter.description }}
+
+
 ## Создание виртуального окружения
 ```bash 
 python -m venv .venv
