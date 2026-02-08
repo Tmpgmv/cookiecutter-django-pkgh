@@ -10,7 +10,7 @@
   "main_background_color": "#FFFFFF",
   "aux_background_color": "#7FFF00",
   "attention_color": "#00FA9A",
-  "_student_slug": "{{ cookiecutter.student_full_name_lat.lower().replace(' ', '_') }}",
+  "student_slug": "{{ cookiecutter.student_full_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
   "_copy_without_render": [
          "**/*.html"
      ]
