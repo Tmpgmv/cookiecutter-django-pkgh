@@ -139,6 +139,6 @@ PASSWORD_HASHERS = [
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = reverse_lazy("login")
 
-APP_NAME = "{{ cookiecutter.project_name_rus }}"  # PREP Наименование приложения. Используется по необходимости. В частности, в шаблонах {{ APP_NAME }}.
+APP_NAME = "{{ cookiecutter.project_name_rus }}"  # PREP Наименование приложения. Используется по необходимости.
 
 # } PREP
