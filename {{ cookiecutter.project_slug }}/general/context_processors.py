@@ -1,5 +1,7 @@
-from django.conf import settings  # PREP
+# PREP {
+def project_name(request):
+    return {"PROJECT_NAME": {{ cookiecutter.project_name_rus }}}
 
-
-def app_name(request):  # PREP
-    return {"APP_NAME": settings.APP_NAME}  # PREP
+def project_description(request):
+    return {"PROJECT_DESCRIPTION": {{ cookiecutter.project_description }}}
+# } PREP

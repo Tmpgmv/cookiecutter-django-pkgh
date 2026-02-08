@@ -73,7 +73,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "general.context_processors.app_name",  # PREP
+                "general.context_processors.project_name",  # PREP
+                "general.context_processors.project_description",  # PREP
             ],
         },
     },
@@ -155,7 +156,4 @@ PASSWORD_HASHERS = [
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = reverse_lazy("login")
-
-APP_NAME = "{{ cookiecutter.project_name_rus }}"  # PREP Наименование приложения. Используется по необходимости.
-
 # } PREP

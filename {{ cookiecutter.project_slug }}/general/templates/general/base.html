@@ -9,7 +9,7 @@
     <link rel="icon" href="{% static 'general/img/icon.png' %}" type="image/png">
     <link rel="stylesheet" href="{% static 'general/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'general/css/bootstrap.min.css' %}">
-    <title>{{ APP_NAME }}: {% block title %} {% endblock %}</title>
+    <title>{{ PROJECT_NAME }}: {% block title %} {% endblock %}</title>
 </head>
 <body>
 
@@ -48,21 +48,23 @@
     </section>
 </div>
 
-<footer class="pt-4 my-md-5 pt-md-5 border-top aux-background-color">
+
+<footer class="pt-4 container my-md-5 pt-md-5 border-top aux-background-color">
     <div class="row">
         <div class="col-12 col-md">
-            <img class="mb-2" src="{% static 'general/css/style.css' %}" alt="Logo" width="24">
+            <img class="mb-2" src="{% static 'general/img/icon.png' %}" alt="Logo" width="24">
             <small class="d-block mb-3 text-body-secondary">© {% now "Y" %} </small></div>
         <div class="col-6 col-md">
         </div>
         <div class="col-6 col-md">
         </div>
         <div class="col-6 col-md">
-            <h5>{{ cookiecutter.project_name_rus }}</h5>
-            <p>{{ cookiecutter.description }}</p>
+            <h5>{{ PROJECT_NAME }}</h5>
+            <p>{{ PROJECT_DESCRIPTION }}</p>
         </div>
     </div>
 </footer>
+
 
 <script src="{% static 'general/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'js/jquery.js' %}"></script>

@@ -6,7 +6,7 @@
   "project_name_rus": "ПКГХ",
   "project_name_lat": "PKGH",
   "project_slug": "{{ cookiecutter.project_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
-  "description": "Описание проекта",
+  "project_description": "Описание проекта",
   "main_background_color": "#FFFFFF",
   "aux_background_color": "#7FFF00",
   "attention_color": "#00FA9A",
