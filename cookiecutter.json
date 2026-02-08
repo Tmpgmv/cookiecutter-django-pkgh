@@ -1,5 +1,6 @@
 {
   "student_full_name": "Имярек",
+  "project_name_rus": "ПКГХ",
   "project_name_lat": "PKGH",
   "project_slug": "{{ cookiecutter.project_name_lat.lower().replace(' ', '_') }}"
 }

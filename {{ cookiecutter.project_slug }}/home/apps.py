@@ -7,5 +7,4 @@ class HomeConfig(AppConfig):
     Главная страница.
     """
 
-
-    name = 'home'
+    name = "home"

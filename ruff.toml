@@ -1,0 +1,18 @@
+required-version = ">=0.14"
+target-version = "py314"
+line-length = 88
+cache-dir = ".cache/ruff"
+
+[format]
+indent-style = "space"
+quote-style = "double"
+line-ending = "lf"
+docstring-code-format = true
+
+[lint]
+select = [
+  "I",   # import sorting
+  "N",   # pep8-naming: identifier naming
+  "RUF", # Ruff-native rules
+  "W",   # pycodestyle: style warnings
+]

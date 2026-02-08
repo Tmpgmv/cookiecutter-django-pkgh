@@ -10,4 +10,4 @@ class HomeView(TemplateView):  # PREP
     Реальная задача может сильно отличаться.
     """
 
-    template_name = 'home/home.html'  # PREP
+    template_name = "home/home.html"  # PREP

@@ -17,5 +17,4 @@ class GeneralConfig(AppConfig):
     представлениями и тестами.н
     """
 
-
-    name = 'general'
+    name = "general"
