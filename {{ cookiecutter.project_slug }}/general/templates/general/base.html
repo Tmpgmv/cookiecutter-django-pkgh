@@ -12,14 +12,46 @@
     <title>{{ APP_NAME }}: {% block title %} {% endblock %}</title>
   </head>
   <body>
-    <h1>{% block h %} {% endblock %}</h1>
-    {% include "general/message.html" %}
-    <section id="content">
-        {% block content %}{% endblock %}
-    </section>
+
+      <header>
+        <div class="container p-3 aux-background">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <img src="{% static 'icon.png' %}" alt="logo" width="50px"/>
+                    <span class="ms-2 fs-1 fw-bold">ООО "Обувь"</span>
+                </div>
+                <div class="text-end">
+                    <div>
+                        <p>{{ user.get_full_name }}</p>
+                        <p>{{ user.role }}</p>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Выход"/>
+                        </form>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+      <h1>{% block h %} {% endblock %}</h1>
+      {% include "general/message.html" %}
+    </div>
+
+    <div class="container">
+      <section id="content">
+          {% block content %}{% endblock %}
+      </section>
+    </div>
+
     <script src="{% static 'general/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'general/js/jquery.js' %}"></script>
     <script src="{% static 'general/js/js.js' %}"></script>
+    {% block script %}{% endblock %}
   </body>
 </html>
 {% comment %} } PREP {% endcomment %}

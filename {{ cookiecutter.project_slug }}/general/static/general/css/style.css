@@ -22,3 +22,15 @@
 .text-content-success { font-weight: 500; }
 
 /* } PREP */
+
+
+
+:root {
+  --main-color: {{ cookiecutter.main_background_color }}; /* PKGH Основной фон */
+  --aux-color:  {{ cookiecutter.aux_background_color }}; /* PKGH Дополнительный фон */
+  --attention-color: {{ cookiecutter.attention_color }}; /* PKGH Акцентирование внимания */
+}
+
+body {
+  font-family: {{ cookiecutter.font_family }};
+}

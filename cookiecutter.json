@@ -1,7 +1,16 @@
 {
-  "student_full_name": "Имярек",
+  "student_full_name_rus": "Имярек",
+  "student_full_name_lat": "First Patronymic Last",
+  "db_username": "username",
+  "db_password": "password",
   "project_name_rus": "ПКГХ",
   "project_name_lat": "PKGH",
+  "description": "Описание проекта",
+  "font_family": "\"Times New Roman\", Times, serif;",
+  "main_background_color": "#FFFFFF",
+  "aux_background_color": "#7FFF00",
+  "attention_color": "#00FA9A",
+  "student_slug": "{{ cookiecutter.student_full_name_lat.lower().replace(' ', '_') }}",
   "project_slug": "{{ cookiecutter.project_name_lat.lower().replace(' ', '_') }}",
   "_copy_without_render": [
          "**/*.html"
