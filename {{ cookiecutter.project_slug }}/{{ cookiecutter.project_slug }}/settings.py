@@ -88,7 +88,7 @@ WSGI_APPLICATION = "{{ cookiecutter.project_slug }}.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "{{ cookiecutter._student_slug }}_{{ cookiecutter._project_slug }}",
+        "NAME": "{{ cookiecutter._student_slug }}_{{ cookiecutter.project_slug }}",
         "USER": "{{ cookiecutter.db_username }}",
         "PASSWORD": "{{ cookiecutter.db_password }}",
         "HOST": "127.0.0.1",
