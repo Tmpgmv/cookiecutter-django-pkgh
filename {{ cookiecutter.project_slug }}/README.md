@@ -7,7 +7,24 @@
 ## Экзаменационная работа `{{ cookiecutter.project_name_rus }}`
 Выполнил: {{ cookiecutter.student_full_name }}
 
+## Создание виртуального окружения
+```bash 
+python -m venv .venv
+```
+
+## Активация виртуального окружения
+```bash 
+.venv\Scripts\activate  # Windows
+
+source .venv/bin/activate # Linux/MacOS
+```
+
 ## Установка
 ```bash 
 python -m pip install -r requirements.txt
+```
+
+## Запуск сервера
+```bash
+python manage.py runserver
 ```
