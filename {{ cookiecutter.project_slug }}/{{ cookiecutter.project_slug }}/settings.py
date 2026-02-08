@@ -86,7 +86,6 @@ WSGI_APPLICATION = "{{ cookiecutter.project_slug }}.wsgi.application"
 
 # PREP {
 
-# Символ - в тегах {% if ... -%} и {%- endif %} удаляет лишние пустые строки
 {% if cookiecutter.db_username and cookiecutter.db_password -%}
 DATABASES = {
     "default": {
