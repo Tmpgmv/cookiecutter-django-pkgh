@@ -5,4 +5,9 @@
 ---
 
 ## Экзаменационная работа `{{ cookiecutter.project_name_rus }}`
-Вполнил: {{ cookiecutter.student_full_name }}
+Выполнил: {{ cookiecutter.student_full_name }}
+
+## Установка
+```bash 
+python -m pip install -r requirements.txt
+```
