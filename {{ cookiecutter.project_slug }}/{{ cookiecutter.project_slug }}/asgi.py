@@ -1,5 +1,5 @@
 """
-ASGI config for shoes project.
+ASGI config for {{ cookiecutter.project_name_lat }} project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -12,7 +12,7 @@ import os
 from django.core.asgi import get_asgi_application
 
 os.environ.setdefault(
-    "DJANGO_SETTINGS_MODULE", "{{ cookiecutter.project_slug }}.settings"
+    "DJANGO_SETTINGS_MODULE", "{{ cookiecutter._project_slug }}.settings"
 )
 
 application = get_asgi_application()

@@ -62,7 +62,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "{{ cookiecutter.project_slug }}.urls"
+ROOT_URLCONF = "{{ cookiecutter._project_slug }}.urls"
 
 TEMPLATES = [
     {
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "{{ cookiecutter.project_slug }}.wsgi.application"
+WSGI_APPLICATION = "{{ cookiecutter._project_slug }}.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
@@ -88,7 +88,7 @@ WSGI_APPLICATION = "{{ cookiecutter.project_slug }}.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "{{ cookiecutter.student_slug }}_{{ cookiecutter.project_slug }}",
+        "NAME": "{{ cookiecutter._student_slug }}_{{ cookiecutter._project_slug }}",
         "USER": "{{ cookiecutter.db_username }}",
         "PASSWORD": "{{ cookiecutter.db_password }}",
         "HOST": "127.0.0.1",
