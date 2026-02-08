@@ -24,6 +24,16 @@ source .venv/bin/activate # Linux/MacOS
 python -m pip install -r requirements.txt
 ```
 
+## Применение миграций
+```bash
+python manage.py migrate
+```
+
+## Создать пользователя
+```bash
+python manage.py createsuperuser
+```
+
 ## Запуск сервера
 ```bash
 python manage.py runserver
