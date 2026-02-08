@@ -1,0 +1,33 @@
+{% comment %} PREP { {% endcomment %}
+
+{% comment %}
+PREP
+
+Применять в шаблоне:
+    {% include "general/message.html" %}
+
+{% endcomment %}
+
+{% load bootstrap_icons %}
+
+{% for message in messages %}
+    {# We combine a static class 'message-box' with a dynamic class based on the tag #}
+    <div class="message-box message-{{ message.tags }} py-3 px-4 container mb-3">
+        <div class="d-flex align-items-center">
+            <span>
+                {% if message.tags == "error" %}
+                    {% bs_icon 'exclamation-octagon-fill' size='1.5em' color='#842029' %}
+                {% else %}
+                    {% bs_icon 'hand-thumbs-up-fill' size='1.5em' color='#0f5132' %}
+                {% endif %}
+            </span>
+
+            {# Applying the tag class here ensures text color is also handled #}
+            <span class="ms-3 text-content-{{ message.tags }}">
+                {{ message }}
+            </span>
+        </div>
+    </div>
+{% endfor %}
+
+{% comment %} } PREP {% endcomment %}
