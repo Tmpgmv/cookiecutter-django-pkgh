@@ -85,6 +85,9 @@ WSGI_APPLICATION = "{{ cookiecutter.project_slug }}.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 # PREP {
+
+# Символ - в тегах {% if ... -%} и {%- endif %} удаляет лишние пустые строки
+{% if cookiecutter.db_username and cookiecutter.db_password -%}
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -95,13 +98,14 @@ DATABASES = {
         "PORT": "5432",
     }
 }
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": "{{ cookiecutter.project_slug }}",
-#     }
-# }
+{% else -%}
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+{% endif %}
 
 # } PREP
 
