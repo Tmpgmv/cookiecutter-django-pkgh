@@ -5,7 +5,7 @@
 ---
 
 ## Экзаменационная работа `{{ cookiecutter.project_name_rus }}`
-Выполнил: {{ cookiecutter.student_full_name_rus_rus }}
+Выполнил: {{ cookiecutter.student_full_name_rus }}
 
 {{ cookiecutter.description }}
 
