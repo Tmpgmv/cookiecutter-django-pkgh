@@ -31,6 +31,6 @@ def project_context(request):
     by the final application, not by Cookiecutter itself.
     """
     return {
-        "PROJECT_NAME": "{{ cookiecutter.project_name_rus|replace('\"', '\\\"')|replace(\"'\", \"\\'\")|trim() }}",
-        "PROJECT_DESCRIPTION": "{{ cookiecutter.project_description|replace('\"', '\\\"')|replace(\"'\", \"\\'\")|trim() }} }}",
+        "PROJECT_NAME": "{{ cookiecutter._project_name_rus }}",
+        "PROJECT_DESCRIPTION": "{{ cookiecutter._project_description }}",
     }
