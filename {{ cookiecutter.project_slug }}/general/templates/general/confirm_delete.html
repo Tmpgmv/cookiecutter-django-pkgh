@@ -1,3 +1,12 @@
+{% comment %}
+PREP
+
+В шаблон с суффиксом confirm_delete добавьте строку:
+
+{% include 'general/confirm_delete.html' %}
+
+{%endcomment%}
+
 {% extends 'general/base.html' %}
 {% load bootstrap_icons %}
 
@@ -14,7 +23,8 @@
             {% bs_icon 'trash3-fill' color='#dc3545' size='2em' %}
         </div>
         <div class="col-12 col-md-11">
-            <form method="post">{% csrf_token %}
+            <form method="post">
+                {% csrf_token %}
                 <p>Удалить "{{ object }}"?</p>
                 {{ form }}
                 <input class="btn btn-primary" type="submit" value="Да">

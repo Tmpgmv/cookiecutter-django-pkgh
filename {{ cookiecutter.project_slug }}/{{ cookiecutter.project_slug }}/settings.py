@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # } PREP
     "home",  # PREP
     "general",  # PREP
+    "accounts", # PREP
     # PREP {
     # Должно быть крайним в списке. См. https://pypi.org/project/django-cleanup/
     "django_cleanup.apps.CleanupConfig",
@@ -53,10 +54,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    # PREP {
-    # Для упрощения.
-    # 'django.middleware.csrf.CsrfViewMiddleware',
-    # } PREP
+    'django.middleware.csrf.CsrfViewMiddleware',
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -155,4 +153,7 @@ PASSWORD_HASHERS = [
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = reverse_lazy("login")
+
+# AUTH_USER_MODEL = 'accounts.User'
+
 # } PREP

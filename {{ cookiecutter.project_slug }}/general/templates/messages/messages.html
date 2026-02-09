@@ -1,0 +1,17 @@
+{% comment %} PREP { {% endcomment %}
+
+{% comment %}
+PREP
+
+Применять в шаблоне:
+    {% include "messages/messages.html" with type="error" messages=form.non_field_errors %}
+
+{% endcomment %}
+
+{% load bootstrap_icons %}
+
+{% for message in messages %}
+    {% include "general/message.html" with type="error" message=message %}
+{% endfor %}
+
+{% comment %} } PREP {% endcomment %}

@@ -28,10 +28,10 @@
                 </div>
                 {% if user.is_authenticated %}
                 <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
                     <input type="submit" value="Выход"/>
                 </form>
                 {% endif %}
-
             </div>
         </div>
     </div>
@@ -39,11 +39,11 @@
 
 <div class="container">
     <h1>{% block h %} {% endblock %}</h1>
-    {% include "general/message.html" %}
+    {% include "messages/tagged_messages.html" %}
 </div>
 
 <div class="container mb-5">
-    <section id="content">
+    <section id="content" class="content">
         {% block content %}{% endblock %}
     </section>
 </div>
