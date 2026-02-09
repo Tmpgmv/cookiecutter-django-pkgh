@@ -73,8 +73,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "general.context_processors.project_name",  # PREP
-                "general.context_processors.project_description",  # PREP
+                "general.context_processors.project_context",  # PREP
             ],
         },
     },
