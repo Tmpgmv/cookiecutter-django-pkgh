@@ -1,5 +1,14 @@
 # PREP {
 def sanitize(a_string):
+    """
+    Надо санировать данные от пользователя.
+    Иначе получим что-то вроде этого:
+        return {"PROJECT_NAME": "ООО "Обувь""}
+                                ^^^^^^^^^^^
+        SyntaxError: invalid syntax. Perhaps you forgot a comma?
+
+    Наша задача вернуть "ООО \"Обувь\"" в данном случае.
+    """
     result = a_string.replace('"', '\\"').replace("'", "\\'")
     return result
 
