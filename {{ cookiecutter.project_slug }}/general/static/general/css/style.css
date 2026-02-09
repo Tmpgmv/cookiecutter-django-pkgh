@@ -27,7 +27,7 @@
 .text-content-error { font-weight: 500; }
 .text-content-success { font-weight: 500; }
 
-body {
+body.font-customized {
   font-family: "Times New Roman", Times, serif;
   background-color: var(--main-background-color);
 }
