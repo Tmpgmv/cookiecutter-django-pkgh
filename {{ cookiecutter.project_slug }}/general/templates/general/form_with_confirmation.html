@@ -37,7 +37,7 @@ PREP
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
-                <button type="button" class="btn btn-danger" id="confirmBtn">Да</button>
+                <button type="button" class="btn btn-danger" id="confirm-btn">Да</button>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@ PREP
 
 <script src="{% static 'general/js/bootstrap.bundle.min.js' %}"></script>
 <script>
-document.getElementById('confirmBtn').addEventListener('click', function() {
+document.getElementById('confirm-btn').addEventListener('click', function() {
     document.getElementById('form-with-confirmation').submit();
 });
 </script>
