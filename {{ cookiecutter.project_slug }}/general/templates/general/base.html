@@ -51,14 +51,10 @@
 
 <footer class="pt-4 container my-md-5 pt-md-5 border-top aux-background-color">
     <div class="row">
-        <div class="col-12 col-md">
+        <div class="col-12 col-md-2">
             <img class="mb-2" src="{% static 'general/img/icon.png' %}" alt="Logo" width="24">
-            <small class="d-block mb-3 text-body-secondary">© {% now "Y" %} </small></div>
-        <div class="col-6 col-md">
-        </div>
-        <div class="col-6 col-md">
-        </div>
-        <div class="col-6 col-md">
+            <p class="d-block mb-3 text-body-secondary">© {% now "Y" %} {{ PROJECT_NAME }}</p></div>
+        <div class="col-12 col-md-10">
             <h5>{{ PROJECT_NAME }}</h5>
             <p>{{ PROJECT_DESCRIPTION }}</p>
         </div>
