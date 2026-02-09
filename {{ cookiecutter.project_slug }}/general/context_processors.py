@@ -22,23 +22,14 @@
 # # } PREP
 
 
-def sanitize_string(value):
-    """Escape quotes for Python string literals."""
-    return (value.replace('\\', '\\\\')
-                 .replace('"', '\\"')
-                 .replace("'", "\\'"))
+# def sanitize_string(value):
+#     """Escape quotes for Python string literals."""
+#     return (value.replace('\\', '\\\\')
+#                  .replace('"', '\\"')
+#                  .replace("'", "\\'"))
 
 def project_context(request):
-    """
-    Returns global context variables for the project.
-    Note: These Jinja2 strings are intended to be rendered
-    by the final application, not by Cookiecutter itself.
-    """
-
-    with open('.cookiecutter_environment.json', 'r', encoding='utf-8') as f:
-        context = json.load(f)
-
     return {
-        "PROJECT_NAME": sanitize_string(context['project_name_rus']),
-        "PROJECT_DESCRIPTION": sanitize_string(context['project_description']),
+        "PROJECT_NAME": "PLACEHOLDER_NAME",
+        "PROJECT_DESCRIPTION": "PLACEHOLDER_DESCRIPTION",
     }
