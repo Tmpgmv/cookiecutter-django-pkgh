@@ -1,5 +1,5 @@
 def project_context(request):
     return {
-        "PROJECT_NAME": "PLACEHOLDER_NAME",
-        "PROJECT_DESCRIPTION": "PLACEHOLDER_DESCRIPTION",
+        "PROJECT_NAME": "{{ cookiecutter.project_name }}",
+        "PROJECT_DESCRIPTION": "{{ cookiecutter.project_description }}",
     }
