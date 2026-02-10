@@ -11,7 +11,8 @@ class User(AbstractUser):
         return super().first_name + " " + self.patronymic + " " + super().last_name
 
     def is_admin(self):
-        return self.groups.filter(name='Администратор').exists()
+        result = self.groups.filter(name='Администратор').exists() or self.is_superuser
+        return result
 
     def is_manager(self):
         return self.groups.filter(name='Менеджер').exists()
