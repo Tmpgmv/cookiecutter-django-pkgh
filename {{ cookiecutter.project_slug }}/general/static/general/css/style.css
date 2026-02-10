@@ -48,6 +48,19 @@ body.font-customized {
     min-height: 400px;
 }
 
+.del-button {
+    bottom: 20px;
+    right: 20px;
+}
+
+.article-img {
+    width: 100px;
+}
+
+.attention-border {
+    border-style: solid;
+    border-color: var(--attention-color);
+}
 /* } PREP */
 
 /* STUD! { */

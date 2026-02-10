@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="row attention-border mb-3">
+    <a href="{# PREP {% url 'product_update' article.pk  %} #}" class="stretched-link"></a>
+
+    <div class="col attention-border p-3 mb-3 mt-3 ms-3 d-flex justify-content-center align-items-center">
+        <img src="{% static 'general/img/icon.png' %}" class="article-img" alt="img">
+    </div>
+    <div class="col attention-border p-3 mb-3 mt-3 ms-3">
+        <p class="fw-bold">Inner 2</p>
+        <p>Inner 2</p>
+        <p>Inner 2</p>
+    </div>
+    <div class="col position-relative attention-border p-3 m-3 text-center">
+        <p>Inner 3</p>
+        <p>Inner 3</p>
+
+        {% if user.is_superuser %}
+        <form action="{# PREP {% url 'product_delete' article.pk %} #}">
+            {% csrf_token %}
+            <input type="submit" class="del-button position-absolute z-3" value="Удалить"/>
+        </form>
+        {% endif %}
+    </div>
+</div><!-- PREP .row -->
