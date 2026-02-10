@@ -1,0 +1,41 @@
+{% load static %}
+
+{% comment %}
+
+PREP
+
+https://getbootstrap.com/docs/5.3/utilities/spacing/#gap
+Элемент <a> с классом stretched-link добавляет псевдо-элемент,
+который имеет ширину и высоту.
+
+Будучи помещен выше внутренних дивов, он сдвигает элементы и
+рушит всю гармонию.
+
+Если поместить ссылку после внутренних дивов,
+визуально удваивается марджин снизу.
+
+Поэтому у внутренних дивов снизу нет марджинов.
+
+{% endcomment %}
+
+
+
+<div style="grid-template-columns: 4fr 1fr;" class="d-grid mb-3 mt-3 gap-3 position-relative attention-border">
+    <div class="p-2 ms-3 mt-3 attention-border">
+        <p class="fw-bold">Grid item 2</p>
+        <p>Grid item 2</p>
+        <p>Grid item 2</p>
+        <p>Grid item 2</p>
+    </div>
+    <div class="p-2 me-3 mt-3 attention-border position-relative text-center">
+        <p>Grid item 2</p>
+
+        {% if user.is_superuser %}
+        <form method="POST" action="{# PREP {% url 'product_delete' article.pk %} #}">
+            {% csrf_token %}
+            <input type="submit" class="del-button position-absolute z-3" value="Удалить"/>
+        </form>
+        {% endif %}
+    </div>
+    <a href="{# PREP {% url 'product_update' article.pk %} #}" class="stretched-link"></a>
+</div>
