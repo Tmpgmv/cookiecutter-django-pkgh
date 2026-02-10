@@ -41,3 +41,29 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```
+
+## Сброс миграций
+```commandline
+# 1. Останови Django сервер (Ctrl+C)
+
+# 2. Удали все миграции
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc" -delete
+
+# 3. Удали БД: 
+Если используется PostgreSQL
+dropdb your_db_name
+createdb your_db_name
+
+
+Если используется SQLite
+rm db.sqlite3
+
+
+# 4. Создай новые миграции
+python manage.py makemigrations
+
+# 5. Примени их
+python manage.py migrate
+
+```
