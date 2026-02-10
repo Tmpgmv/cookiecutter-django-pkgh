@@ -34,6 +34,10 @@ class User(AbstractUser):
             return 'Менеджер'
         else:
             return 'Гость'
+
+    class Meta:
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
 # } PREP
 
 {% endif %}
