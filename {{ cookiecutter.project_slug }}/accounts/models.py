@@ -1,5 +1,7 @@
 from django.db import models
 
+{% if cookiecutter.custom_user == "y" %}
+
 # PREP {
 from django.contrib.auth.models import AbstractUser
 
@@ -33,3 +35,5 @@ class User(AbstractUser):
         else:
             return 'Гость'
 # } PREP
+
+{% endif %}

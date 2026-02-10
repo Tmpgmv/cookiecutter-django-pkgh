@@ -154,6 +154,8 @@ PASSWORD_HASHERS = [
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = reverse_lazy("login")
 
-# AUTH_USER_MODEL = 'accounts.User'
+{% if cookiecutter.custom_user == "y" %}
+AUTH_USER_MODEL = 'accounts.User'
+{% endif %}
 
 # } PREP
