@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 
 from django.urls import reverse_lazy  # PREP
+from . import secret
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,9 +89,9 @@ WSGI_APPLICATION = "{{ cookiecutter.project_slug }}.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "{{ cookiecutter.student_slug }}_{{ cookiecutter.project_slug }}",
-        "USER": "{{ cookiecutter.db_username }}",
-        "PASSWORD": "{{ cookiecutter.db_password }}",
+        "NAME": secret.DB_NAME,
+        "USER": secret.DB_USER,
+        "PASSWORD": secret.DB_PASS,
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
