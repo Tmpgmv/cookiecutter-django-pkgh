@@ -11,7 +11,7 @@ PREP
 {% load bootstrap_icons %}
 
 {% for message in messages %}
-    {% include "general/message.html" with type="error" message=message %}
+    {% include "messages/message.html" with type="error" message=message %}
 {% endfor %}
 
 {% comment %} } PREP {% endcomment %}
