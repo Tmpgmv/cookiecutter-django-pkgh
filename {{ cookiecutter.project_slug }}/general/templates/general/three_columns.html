@@ -1,6 +1,13 @@
 {% load static %}
 
-{# См. комментарий к two_columns.html. #}
+{% comment %}
+PREP См. комментарий к two_columns.html.
+
+Ипользование:
+
+{% include 'general/three_columns.html' %}
+
+{% endcomment %}
 
 <div style="grid-template-columns: 1fr 3fr 1fr;" class="d-grid mb-3 mt-3 gap-3 position-relative attention-border">
     <div class="p-2 ms-3 mt-3 attention-border d-flex justify-content-center align-items-center">
