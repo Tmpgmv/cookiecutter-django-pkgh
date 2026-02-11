@@ -1,6 +1,7 @@
 {
   "student_full_name_rus": "Фамилия Имя Отчество",
   "student_full_name_lat": "Last First Patronymic",
+  "db_host": "localhost",
   "db_username": "",
   "db_password": "",
   "project_name_rus": "Демонстрационный экзамен",

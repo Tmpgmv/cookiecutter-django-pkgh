@@ -92,7 +92,7 @@ DATABASES = {
         "NAME": secret.DB_NAME,
         "USER": secret.DB_USER,
         "PASSWORD": secret.DB_PASS,
-        "HOST": "127.0.0.1",
+        "HOST": "{{ cookiecutter.db_host }}",
         "PORT": "5432",
     }
 }
