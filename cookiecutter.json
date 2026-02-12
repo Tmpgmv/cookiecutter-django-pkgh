@@ -5,7 +5,7 @@
   "db_password": "",
   "project_name_rus": "Демонстрационный экзамен",
   "project_name_lat": "exam",
-  "project_slug": "{{ cookiecutter.project_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace(',', '')|replace('.', '')|replace('\"', '\\\"')|replace(\"'\", \"\\'\")|trim() }}",
+  "project_slug": "{{ cookiecutter.project_slug|replace(' ', '_')|replace('-', '_')|replace(',', '')|replace('.', '')|replace('\"', '')|replace('\\'', '')|trim() }}",
   "project_description": "Описание проекта",
   "main_background_color": "#FFFFFF",
   "aux_background_color": "#7FFF00",
