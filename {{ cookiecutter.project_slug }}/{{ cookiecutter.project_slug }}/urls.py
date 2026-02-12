@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-{% if cookiecutter.login_required == "y" %}
+{% if cookiecutter.login_required %}
 from django.contrib.auth.decorators import login_required
 {% endif %}
 from django.urls import path, include
