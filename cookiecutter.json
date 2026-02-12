@@ -22,7 +22,7 @@
     "type": "yesno",
     "default": false
   },
-  "student_slug": "{{ cookiecutter.surname_initials_lat.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+  "student_slug": "{{ cookiecutter.surname_initials_lat.lower()|replace('-', '_')|replace('.', '')|replace(' ', '_')|trim() }}",
   "_copy_without_render": [
       "**/*.html"
   ]
