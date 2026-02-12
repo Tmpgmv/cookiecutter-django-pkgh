@@ -1,7 +1,7 @@
-from django.conf import settings
+from {{ cookiecutter.project_slug }}.cookiecutter_const import *
 
 def project_context(request):
     return {
-        "PROJECT_NAME": settings.project_name_rus,
-        "PROJECT_DESCRIPTION": settings.project_description,
+        "PROJECT_NAME": PROJECT_NAME_RUS,
+        "PROJECT_DESCRIPTION": PROJECT_DESCRIPTION,
     }
