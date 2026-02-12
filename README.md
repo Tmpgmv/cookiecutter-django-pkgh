@@ -56,6 +56,7 @@ student_slug - Слаг студента. Применяется как част
 ### 1. Остановите Django сервер (Ctrl+C)
 
 ### 2. Удалите все миграции
+
 ```bash
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 find . -path "*/migrations/*.pyc" -delete
@@ -63,6 +64,7 @@ find . -path "*/migrations/*.pyc" -delete
 
 ### 3. Удалите БД: 
 Если используется PostgreSQL
+
 ```bash
 dropdb your_db_name
 createdb your_db_name
@@ -74,10 +76,12 @@ rm db.sqlite3
 ```
 
 ### 4. Создайте новые миграции
+
 ```bash
 python manage.py makemigrations
 ```
 ### 5. Примените их
+
 ```bash
 python manage.py migrate
 ```
