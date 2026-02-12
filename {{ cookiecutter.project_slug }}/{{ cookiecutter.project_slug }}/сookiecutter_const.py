@@ -1,7 +1,7 @@
 STUDENT_FULL_NAME_RUS = "{{ cookiecutter.student_full_name_rus|replace('\"', '\\\"')|replace('\'', '\\\'')|trim() }}"
 STUDENT_FULL_NAME_LAT = "{{ cookiecutter.student_full_name_lat|replace('\"', '\\\"')|replace('\'', '\\\'')|trim() }}"
 PROJECT_NAME_RUS = "{{ cookiecutter.project_name_rus|replace('\"', '\\\"')|replace('\'', '\\\'')|trim() }}"
-PROJECT_NAME_LAT = "{{ cookiecutter.project_name_lat|replace('\"', '\\\"')||replace('\'', '\\\'')|trim() }}"
+PROJECT_NAME_LAT = "{{ cookiecutter.project_name_lat|replace('\"', '\\\"')|replace('\'', '\\\'')|trim() }}"
 PROJECT_SLUG = "{{ cookiecutter.project_slug|replace(' ', '_')|replace('-', '_')|replace(',', '')|replace('.', '')|replace('\"', '')|replace('\'', "")|trim() }}"
 PROJECT_DESCRIPTION =  "{{ cookiecutter.project_description|replace('\"', '\\\"')|replace('\'', '\\\'')|trim() }}"
 MAIN_BACKGROUND_COLOR = "{{ cookiecutter.main_background_color|trim() }}"
