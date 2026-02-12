@@ -12,18 +12,15 @@
   "attention_color": "#00FA9A",
   "custom_user": {
     "type": "yesno",
-    "default": true,
-    "help": "custom_user [y/n]:"
+    "default": true
   },
   "login_required": {
     "type": "yesno",
-    "default": true,
-    "help": "login_required [y/n]:"
+    "default": true
   },
   "tests_required": {
     "type": "yesno",
-    "default": false,
-    "help": "tests_required [y/n]:"
+    "default": false
   },
   "student_slug": "{{ cookiecutter.student_full_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
   "_copy_without_render": [
