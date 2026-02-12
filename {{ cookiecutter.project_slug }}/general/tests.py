@@ -4,6 +4,8 @@ from django.test import TestCase, LiveServerTestCase
 from django.urls import reverse
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver import Keys
 
 
 {% if cookiecutter.custom_user %}
