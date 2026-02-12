@@ -3,6 +3,8 @@ from {{ cookiecutter.project_slug }}.cookiecutter_const import PROJECT_NAME_RUS
 from django.test import TestCase, LiveServerTestCase
 from django.urls import reverse
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+
 
 {% if cookiecutter.custom_user %}
 from accounts.models import User
