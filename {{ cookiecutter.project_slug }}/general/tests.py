@@ -1,5 +1,5 @@
 {% if cookiecutter.tests_required %}
-from "{{ cookiecutter.project_slug }}".cookiecutter_const import PROJECT_NAME_RUS
+from {{ cookiecutter.project_slug }}.cookiecutter_const import PROJECT_NAME_RUS
 from django.test import TestCase
 from django.urls import reverse
 
