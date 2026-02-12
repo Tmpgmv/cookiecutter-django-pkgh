@@ -1,4 +1,4 @@
-from {{ cookiecutter.project_slug }}.cookiecutter_const import *
+from {{ cookiecutter.project_slug }}.сookiecutter_const import *
 
 def project_context(request):
     return {
