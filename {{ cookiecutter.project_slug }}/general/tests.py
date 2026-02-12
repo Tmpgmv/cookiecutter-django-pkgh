@@ -1,9 +1,9 @@
-{% if cookiecutter.tests_required == "y" %}
+{% if cookiecutter.tests_required %}
 from "{{ cookiecutter.project_slug }}".cookiecutter_const import PROJECT_NAME_RUS
 from django.test import TestCase
 from django.urls import reverse
 
-{% if cookiecutter.custom_user == "y" %}
+{% if cookiecutter.custom_user %}
 from accounts.models import User
 {% else %}
 from django.contrib.auth.models import User
@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 
 class HomePageTest(TestCase):
     def setUp(self):
-        {% if cookiecutter.login_required == "y" %}
+        {% if cookiecutter.login_required %}
         self.user = User.objects.create_user(username='testuser', password='testpass')
         {% endif %}
 
@@ -19,7 +19,7 @@ class HomePageTest(TestCase):
         """
         На страницу home присутствует ли название проекта?
         """
-        {% if cookiecutter.login_required == "y" %}
+        {% if cookiecutter.login_required %}
         self.client.login(username='testuser', password='testpass')
         {% endif %}
         response = self.client.get(reverse('home'))

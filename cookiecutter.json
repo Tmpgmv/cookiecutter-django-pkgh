@@ -11,16 +11,16 @@
   "aux_background_color": "#7FFF00",
   "attention_color": "#00FA9A",
   "custom_user": {
-    "type": "yesno",
-    "default": "y"
+    "type": "boolean",
+    "default": true
   },
   "login_required": {
-    "type": "yesno",
-    "default": "y"
+    "type": "boolean",
+    "default": true
   },
   "tests_required": {
-    "type": "yesno",
-    "default": "n"
+    "type": "boolean",
+    "default": false
   },
   "student_slug": "{{ cookiecutter.student_full_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
   "_copy_without_render": [
