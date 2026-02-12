@@ -18,4 +18,4 @@ class HomePageTest(TestCase):
         self.client.login(username='testuser', password='testpass')
         response = self.client.get(reverse('home'))
         html = response.content.decode("utf8")
-        self.assertIn("{{ cookiecutter.project_name_rus }}", html)
+        self.assertIn("{{ cookiecutter.project_name_rus|replace('\"', '\\\"') }}", html)
