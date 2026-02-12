@@ -9,7 +9,7 @@ Cookiecutter должен быть установлен system wide,
 т.е. не в виртуальном окружении.
 
 ```bash
-uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh
+uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
 ```
 
 ## Комментарий
