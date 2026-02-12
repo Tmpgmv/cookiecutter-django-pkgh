@@ -24,7 +24,7 @@ uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_
 
 ## cookiecutter.json
 
-student_full_name_rus - ФИО студента. Необходимо для документации проекта (README.md).
+**`student_full_name_rus`** - ФИО студента. Необходимо для документации проекта (README.md).
 
 student_full_name_lat - ФИО студента латиницей. Часть имени БД. См. secret.py.
 
