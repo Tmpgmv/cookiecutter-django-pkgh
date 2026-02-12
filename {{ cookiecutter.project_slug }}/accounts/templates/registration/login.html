@@ -11,12 +11,12 @@
                 <table class="table table-borderless mb-3 w-100">
                     <tbody>
                         <tr>
-                            <td><label for="id_username" class="form-label">Имя пользователя:</label></td>
-                            <td><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" class="form-control"></td>
+                            <td><label for="username" class="form-label">Имя пользователя:</label></td>
+                            <td><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="username" class="form-control"></td>
                         </tr>
                         <tr>
-                            <td><label for="id_password" class="form-label">Пароль:</label></td>
-                            <td><input type="password" name="password" autocomplete="current-password" required="" id="id_password" class="form-control"></td>
+                            <td><label for="password" class="form-label">Пароль:</label></td>
+                            <td><input type="password" name="password" autocomplete="current-password" required="" id="password" class="form-control"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -25,8 +25,8 @@
 
             <form class="my-3" action="/accounts/login/" method="post">
                 {% csrf_token %}
-                <input type="hidden" name="username" value="g">
-                <input type="hidden" name="password" value="g">
+                <input id="guest-username" type="hidden" name="username" value="g">
+                <input id="guest-password" type="hidden" name="password" value="g">
                 <button type="submit" class="btn attention-border w-100">Гость</button>
             </form>
         </div>
