@@ -1,4 +1,5 @@
 {% if cookiecutter.tests_required == "y" %}
+from "{{ cookiecutter.project_slug }}".cookiecutter_const import PROJECT_NAME_RUS
 from django.test import TestCase
 from django.urls import reverse
 
@@ -26,7 +27,7 @@ class HomePageTest(TestCase):
         {% endif %}
         response = self.client.get(reverse('home'))
         html = response.content.decode("utf8")
-        self.assertIn("{{ cookiecutter.project_name_rus|replace('\"', '\\\"') }}", html)
+        self.assertIn(PROJECT_NAME_RUS, html)
 
     def test_user_can_be_created(self):
         """
