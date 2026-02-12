@@ -1,7 +1,8 @@
 {% if cookiecutter.tests_required %}
 from {{ cookiecutter.project_slug }}.cookiecutter_const import PROJECT_NAME_RUS
-from django.test import TestCase
+from django.test import TestCase, LiveServerTestCase
 from django.urls import reverse
+from selenium import webdriver
 
 {% if cookiecutter.custom_user %}
 from accounts.models import User
