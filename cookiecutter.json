@@ -11,6 +11,7 @@
   "aux_background_color": "#7FFF00",
   "attention_color": "#00FA9A",
   "custom_user": "y",
+  "login_required": "y",
   "student_slug": "{{ cookiecutter.student_full_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
   "_copy_without_render": [
       "**/*.html"

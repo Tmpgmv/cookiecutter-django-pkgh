@@ -1,34 +1,35 @@
 {% extends "general/base.html" %}
 
 {% block content %}
-<div class="container">
 
     {% include "messages/messages.html" with type="error" messages=form.non_field_errors %}
 
+    <div class="container mt-5 d-flex justify-content-center align-items-center">
+        <div class="w-100" style="max-width: 400px;">  <!-- Wrapper for both forms -->
+            <form method="post" action="/accounts/login/">
+                {% csrf_token %}
+                <table class="table table-borderless mb-3 w-100">
+                    <tbody>
+                        <tr>
+                            <td><label for="id_username" class="form-label">Имя пользователя:</label></td>
+                            <td><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="id_password" class="form-label">Пароль:</label></td>
+                            <td><input type="password" name="password" autocomplete="current-password" required="" id="id_password" class="form-control"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn attention w-100 mb-2">Войти</button>
+            </form>
 
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </tr>
-        </table>
+            <form class="my-3" action="/accounts/login/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="username" value="g">
+                <input type="hidden" name="password" value="g">
+                <button type="submit" class="btn attention-border w-100">Гость</button>
+            </form>
+        </div>
+    </div>
 
-        <input type="submit" class="btn attention" value="Войти">
-    </form>
-
-    <form class="my-3" action="{% url 'login' %}" method="post" >
-        {% csrf_token %}
-        <input type="hidden" name="username" value="g">
-        <input type="hidden" name="password" value="g">
-        <input type="submit" class="btn btn-outline-secondary" value="Гость"/>
-    </form>
-
-
-</div>
 {% endblock %}

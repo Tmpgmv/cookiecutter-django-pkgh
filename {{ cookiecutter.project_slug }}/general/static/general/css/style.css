@@ -57,8 +57,8 @@ body.font-customized {
     width: 100px;
 }
 
-.attention-border {
-    border-style: solid;
+.btn.attention-border {
+    border-style: single;
     border-color: var(--attention-color);
 }
 
