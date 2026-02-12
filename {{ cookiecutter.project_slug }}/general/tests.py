@@ -10,13 +10,10 @@ from django.contrib.auth.models import User
 {% endif %}
 
 class HomePageTest(TestCase):
-
     def setUp(self):
         {% if cookiecutter.login_required == "y" %}
         self.user = User.objects.create_user(username='testuser', password='testpass')
         {% endif %}
-        cls.selenium = webdriver.Chrome()  # Or Firefox(), etc.
-        cls.selenium.implicitly_wait(10)
 
     def test_home_page_contains_project_name(self):
         """
@@ -34,7 +31,6 @@ class HomePageTest(TestCase):
         Если программно сохранить в БД нового пользователя,
         он должен присутствовать в БД. Так ли это?
         """
-
         User.objects.create_user(username='foo', password='bar')
         selected_user = bool(User.objects.filter(username='foo'))
         self.assertEqual(selected_user, True)
@@ -53,30 +49,22 @@ class SeleniumHomePageTest(LiveServerTestCase):
 
     def setUp(self):
         super().setUp()
-        # Create test user
         self.user = User.objects.create_user(username='selenium_user', password='selenium_pass')
-
-        # Login via Selenium (assumes login form at /login/ with username/password fields)
         self.selenium.get(self.live_server_url + reverse("login"))
         username_field = self.selenium.find_element(By.ID, "username")
         password_field = self.selenium.find_element(By.ID, "password")
         username_field.send_keys('selenium_user')
         password_field.send_keys('selenium_pass')
         password_field.send_keys(Keys.RETURN)
-
-        # Wait for login redirect (adjust selector to match your success page)
         WebDriverWait(self.selenium, 10).until(
             lambda driver: "login" not in driver.current_url
         )
 
     def test_logo_exists_on_home(self):
-
         """
         На странице home присутствует логотип. Так ли это?
         """
-
-        self.selenium.get(self.live_server_url + reverse('home'))  # or your home URL
+        self.selenium.get(self.live_server_url + reverse('home'))
         logo = self.selenium.find_element(By.ID, "logo")
         self.assertTrue(logo.is_displayed())
-
-{ % endif %}
+{% endif %}
