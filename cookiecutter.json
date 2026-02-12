@@ -11,15 +11,15 @@
   "aux_background_color": "#7FFF00",
   "attention_color": "#00FA9A",
   "custom_user": {
-    "type": "boolean",
+    "type": "yesno",
     "default": true
   },
   "login_required": {
-    "type": "boolean",
+    "type": "yesno",
     "default": true
   },
   "tests_required": {
-    "type": "boolean",
+    "type": "yesno",
     "default": false
   },
   "student_slug": "{{ cookiecutter.student_full_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
