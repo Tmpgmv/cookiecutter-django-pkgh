@@ -159,12 +159,4 @@ LOGOUT_REDIRECT_URL = reverse_lazy("login")
 AUTH_USER_MODEL = 'accounts.User'
 {% endif %}
 
-
-####################
-#   Cookiecutter   #
-####################
-
-student_full_name_rus = "{{ cookiecutter.student_full_name_rus|replace('\"', '\\\"') }}"
-project_name_rus = "{{ cookiecutter.project_name_rus|replace('\"', '\\\"') }}"
-project_description = "{{ cookiecutter.project_description|replace('\"', '\\\"') }}"
 # } PREP
