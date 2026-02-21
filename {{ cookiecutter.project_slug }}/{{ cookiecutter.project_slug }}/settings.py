@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     "jquery",
     "django_bootstrap_icons",
     # } PREP
+
     "home",  # PREP
     "general",  # PREP
     "accounts", # PREP
+
     # PREP {
     # Должно быть крайним в списке. См. https://pypi.org/project/django-cleanup/
     "django_cleanup.apps.CleanupConfig",
