@@ -3,6 +3,7 @@
   "surname_initials_lat": "Surname Initials",
   "db_username": "",
   "db_password": "",
+  "db_host": "127.0.0.1",
   "project_name_rus": "Демонстрационный экзамен",
   "project_name_lat": "exam",
   "project_slug": "{{ cookiecutter.project_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace(',', '')|replace('.', '')|replace('\"', '')|replace('\\'', '')|trim() }}",
