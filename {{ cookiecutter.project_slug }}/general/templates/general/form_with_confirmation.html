@@ -15,7 +15,7 @@ PREP
         <link href="{% static 'general/css/bootstrap.min.css'%}" rel="stylesheet">
     </head>
 
-<form id="form-with-confirmation" method="POST">
+<form id="form-with-confirmation" enctype="multipart/form-data"  method="POST">
     {% csrf_token %}
     <table>
     {{form.as_table}}
