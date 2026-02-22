@@ -4,7 +4,7 @@
 PREP
 
 Применение в шаблоне:
-{% include 'general/form_with_confirmation.html %}
+{% include 'general/form_with_confirmation.html' %}
 
 {% endcomment %}
 
@@ -12,12 +12,14 @@ PREP
 
 <html>
     <head>
-        <link href="{% static %} 'general/css/bootstrap.min.css'" rel="stylesheet">
+        <link href="{% static 'general/css/bootstrap.min.css'%}" rel="stylesheet">
     </head>
 
 <form id="form-with-confirmation" method="POST">
     {% csrf_token %}
+    <table>
     {{form.as_table}}
+    </table>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">
         Сохранить
     </button>
