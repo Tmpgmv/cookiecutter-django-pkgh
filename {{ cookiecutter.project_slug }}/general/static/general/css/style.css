@@ -53,6 +53,26 @@ body.font-customized {
     right: 20px;
 }
 
+.btn.del-button {
+    border: 2px solid #dc3545 !important;  /* Bootstrap danger red */
+    color: #dc3545 !important;
+    background: transparent !important;
+    transition: all 0.15s ease !important;  /* Bootstrap transition */
+}
+
+.btn.del-button:hover {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border-color: #bb2d3b !important;
+    transform: translateY(-1px);
+}
+
+/* PREP Нажатие на кнопку */
+.btn.del-button:active {
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
 .article-img {
     width: 100px;
 }
