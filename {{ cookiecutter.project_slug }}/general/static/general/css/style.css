@@ -67,6 +67,10 @@ body.font-customized {
     border-color: var(--attention-color);
 }
 
+.errorlist {
+    color: red;
+}
+
 /* } PREP */
 
 /* STUD! { */
