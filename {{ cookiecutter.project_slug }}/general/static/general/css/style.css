@@ -58,7 +58,12 @@ body.font-customized {
 }
 
 .btn.attention-border {
-    border-style: single;
+    border-style: solid;
+    border-color: var(--attention-color);
+}
+
+.attention-border {
+    border-style: solid;
     border-color: var(--attention-color);
 }
 
