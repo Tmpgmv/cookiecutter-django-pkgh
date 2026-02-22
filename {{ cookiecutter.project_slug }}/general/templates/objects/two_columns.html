@@ -36,11 +36,11 @@ https://getbootstrap.com/docs/5.3/utilities/spacing/#gap
         <p>Grid item 2</p>
 
         {% if user.is_superuser %}
-        <form method="POST" action="{# PREP {% url 'product_delete' article.pk %} #}">
+        <form method="POST" action="{# PREP {% url 'product_delete' object.pk %} #}">
             {% csrf_token %}
             <input type="submit" class="del-button position-absolute z-3" value="Удалить"/>
         </form>
         {% endif %}
     </div>
-    <a href="{# PREP {% url 'product_update' article.pk %} #}" class="stretched-link"></a>
+    <a href="{# PREP {% url 'product_update' object.pk %} #}" class="stretched-link"></a>
 </div>
