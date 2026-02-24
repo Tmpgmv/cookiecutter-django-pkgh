@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 {% if cookiecutter.login_required %}
 from django.contrib.auth.decorators import login_required
@@ -25,16 +25,17 @@ from django.conf.urls.static import static  # PREP
 
 from home.views import HomeView
 
-urlpatterns = (
-    [
-        path("accounts/", include("django.contrib.auth.urls")),
-        {% if cookiecutter.login_required %}
-        path("", login_required(HomeView.as_view()), name="home"),
-        {% else %}
-        path("", HomeView.as_view(), name="home"),
-        {% endif %}
-        path("admin/", admin.site.urls),
-    ]
-    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = []
+
+urlpatterns += i18n_patterns(
+    path("accounts/", include("django.contrib.auth.urls")),
+    {% if cookiecutter.login_required %}
+    path("", login_required(HomeView.as_view()), name="home"),
+    {% else %}
+    path("", HomeView.as_view(), name="home"),
+    {% endif %}
+    path("admin/", admin.site.urls),
 )
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
