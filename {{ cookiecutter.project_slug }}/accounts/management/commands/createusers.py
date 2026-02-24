@@ -33,11 +33,17 @@ class Command(BaseCommand):
         for username in USERS:
             if username == "a":
                 User.objects.create_superuser(
-                    username='a', email='a@a.ru', password='a'
+                    username=username,
+                    email=f'{username}@{username}.ru',
+                    password=username,
+                    first_name=username,
                 )
             else:
                 User.objects.create_user(
-                        username=username, email=f'{username}@{username}.ru', password=username
+                        username=username,
+                        email=f'{username}@{username}.ru',
+                        password=username,
+                        first_name=username,
                     )
 
 
