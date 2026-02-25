@@ -27,11 +27,11 @@ from home.views import HomeView
 
 urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
-    { % if cookiecutter.login_required %}
+    {% if cookiecutter.login_required %}
     path("", login_required(HomeView.as_view()), name="home"),
-    { % else %}
+    {% else %}
     path("", HomeView.as_view(), name="home"),
-    { % endif %}
+    {% endif %}
     path("admin/", admin.site.urls),
 ]
 
