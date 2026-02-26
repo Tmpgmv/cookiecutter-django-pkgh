@@ -26,14 +26,7 @@ class User(AbstractUser):
         return self.get_full_name()
 
     def role(self):
-        if self.is_admin():
-            return 'Администратор'
-        elif self.is_client():
-            return 'Авторизированный клиент'
-        elif self.is_manager():
-            return 'Менеджер'
-        else:
-            return 'Гость'
+        return self.groups.first() or ""
 
     class Meta:
         verbose_name = "Пользователь"
