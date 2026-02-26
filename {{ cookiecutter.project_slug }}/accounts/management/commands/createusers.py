@@ -24,6 +24,8 @@ class Command(BaseCommand):
             group, created = Group.objects.get_or_create(name=group_name)
             groups[code] = group
 
+        print("Созданы группы: " + groups)
+
         return groups
 
 
@@ -38,6 +40,8 @@ class Command(BaseCommand):
                     password=username,
                     first_name=username,
                 )
+
+                print("Создан пользователь: " + username)
             else:
                 User.objects.create_user(
                         username=username,
@@ -45,6 +49,7 @@ class Command(BaseCommand):
                         password=username,
                         first_name=username,
                     )
+                print("Создан пользователь: " + username)
 
 
     def assign_groups_to_users(self):
@@ -56,7 +61,7 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        self.stdout.write(self.style.SUCCESS('Users are being created!'))
+        self.stdout.write(self.style.SUCCESS('Начало создания пользователей и групп!'))
 
         try:
             self.create_auth_groups()
@@ -68,6 +73,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR("Попробуйте"))
             self.stdout.write(self.style.ERROR("python manage.py makemigrations"))
             self.stdout.write(self.style.ERROR("python manage.py migrate"))
+        except IntegrityError as e:
+            pass # Выявлены дубли. Ничего не предпринимаем.
 
-
-        self.stdout.write(self.style.SUCCESS('Success!'))
+        self.stdout.write(self.style.SUCCESS('Завершено!'))
