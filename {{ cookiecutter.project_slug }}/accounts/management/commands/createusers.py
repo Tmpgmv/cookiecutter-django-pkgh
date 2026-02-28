@@ -53,9 +53,7 @@ class Command(BaseCommand):
                 print("Создан пользователь: " + username)
 
 
-    def assign_groups_to_users(self):
-        groups = self.create_auth_groups()
-
+    def assign_groups_to_users(self, groups):
         for username, group in groups.items():
             user = User.objects.get(username=username)
             user.groups.add(group)
@@ -66,9 +64,9 @@ class Command(BaseCommand):
 
         try:
             with transaction.atomic():
-                self.create_auth_groups()
+                groups = self.create_auth_groups()
                 self.create_users()
-                self.assign_groups_to_users()
+                self.assign_groups_to_users(groups)
         except OperationalError as e:
             self.stdout.write(self.style.ERROR("❌ " + e))
             self.stdout.write(self.style.ERROR("========="))
