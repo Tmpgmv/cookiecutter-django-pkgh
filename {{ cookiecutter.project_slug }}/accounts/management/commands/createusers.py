@@ -24,7 +24,8 @@ class Command(BaseCommand):
             group, created = Group.objects.get_or_create(name=group_name)
             groups[code] = group
 
-        print("Созданы группы: " + groups)
+        group_names = ', '.join(group.name for group in groups.values())
+        print(f"Созданы группы: {group_names}")
 
         return groups
 
