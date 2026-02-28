@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
 from django.conf import settings
-from django.db import OperationalError
+from django.db import OperationalError, transaction
 
 User = get_user_model()  # UNIVERSAL: works with any AUTH_USER_MODEL
 
@@ -65,9 +65,10 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Начало создания пользователей и групп!'))
 
         try:
-            self.create_auth_groups()
-            self.create_users()
-            self.assign_groups_to_users()
+            with transaction.atomic():
+                self.create_auth_groups()
+                self.create_users()
+                self.assign_groups_to_users()
         except OperationalError as e:
             self.stdout.write(self.style.ERROR("❌ " + e))
             self.stdout.write(self.style.ERROR("========="))
