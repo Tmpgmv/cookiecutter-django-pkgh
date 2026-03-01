@@ -91,6 +91,11 @@ body.font-customized {
     color: red;
 }
 
+.logo-hyperlink {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* } PREP */
 
 /* STUD! { */

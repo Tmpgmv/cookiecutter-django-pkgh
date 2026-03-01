@@ -16,11 +16,11 @@
 
 <header>
     <div class="container p-3 aux-background-color">
-        <div class="d-flex justify-content-between">
-            <div class="d-flex flex-wrap align-items-center">
+        <a class="d-flex justify-content-between">
+            <a class="logo-hyperlink d-inline-flex align-items-center" href="{% url 'home' %}">
                 <img id="logo" src="{% static 'general/img/icon.png' %}" class="animate__animated animate__swing" alt="logo" width="50px"/>
                 <span id="project-name" class="ms-2 fs-1 fw-bold">{{ PROJECT_NAME }}</span>
-            </div>
+            </a>
             <div id="account-area" class="text-end">
                 {% if user.is_authenticated %}
                     <div>
