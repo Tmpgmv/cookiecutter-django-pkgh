@@ -28,5 +28,7 @@ PREP См. комментарий к two_columns.html.
             {% comment %}<a class="btn del-button position-absolute z-3" href="{% url 'product_delete' object.pk %}">{% bs_icon 'trash' %}</a>{% endcomment %}
         {% endif %}
     </div>
-    <a href="{# PREP {% url 'product_update' object.pk %} #}" class="stretched-link"></a>
+    {% if user.is_superuser %}
+        <a href="{# PREP {% url 'product_update' object.pk %} #}" class="stretched-link"></a>
+    {% endif %}
 </div>
