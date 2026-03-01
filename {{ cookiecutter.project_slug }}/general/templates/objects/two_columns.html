@@ -37,7 +37,7 @@ https://getbootstrap.com/docs/5.3/utilities/spacing/#gap
         <p>Grid item 2</p>
 
         {% if user.is_superuser %}
-            <a class="btn del-button position-absolute z-3" href="{% url 'product_delete' object.pk %}">{% bs_icon 'trash' %}</a>
+            {% comment %}<a class="btn del-button position-absolute z-3" href="{% url 'product_delete' object.pk %}">{% bs_icon 'trash' %}</a>{% endcomment %}
         {% endif %}
     </div>
     <a href="{# PREP {% url 'product_update' object.pk %} #}" class="stretched-link"></a>
