@@ -27,9 +27,20 @@
 .text-content-error { font-weight: 500; }
 .text-content-success { font-weight: 500; }
 
-body.font-customized {
+@font-face {
+  font-family: "OpenSans";
+  src: url("/static/general/font/OpenSans.ttf");
+}
+
+body.body-font-customized {
+  /* PREP {
   font-family: "Times New Roman", Times, serif;
-  background-color: var(--main-background-color);
+  }PREP */
+  font-family: "OpenSans", "Arial", sans-serif;
+}
+
+body.body-background-customized {
+    background-color: var(--main-background-color);
 }
 
 .aux-background-color {
