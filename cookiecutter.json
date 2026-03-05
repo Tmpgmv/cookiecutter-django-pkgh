@@ -29,6 +29,7 @@
         "*.png",
         "*.jpg",
         "*.ico",
+        "*.drawio",
         "assets/*"    
   ]
 }
