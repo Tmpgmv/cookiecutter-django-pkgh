@@ -26,10 +26,20 @@
   "student_slug": "{{ cookiecutter.surname_initials_lat.lower()|replace('-', '_')|replace('.', '')|replace(' ', '_')|trim() }}",
   "_copy_without_render": [
       "**/*.html",
-        "*.png",
-        "*.jpg",
-        "*.ico",
-        "*.drawio",
-        "*.ttf"        
+    "*.png",
+    "*.jpg",
+    "*.jpeg",
+    "*.ico",
+    "*.drawio",
+    "*.ttf",
+    "*.woff",
+    "*.woff2",
+    "*.pyc",
+    "*.db",
+    "*.sqlite3",
+    ".git/*",
+    ".idea/*",
+    ".venv/*",
+    "__pycache__/*"        
   ]
 }
