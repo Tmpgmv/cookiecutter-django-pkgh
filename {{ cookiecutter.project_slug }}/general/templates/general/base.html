@@ -40,31 +40,6 @@
     </div>
 </header>
 
-{% comment %}    
-<header>
-    <div class="container p-3 aux-background-color">
-        <a class="d-flex justify-content-between">
-            <a class="logo-hyperlink d-inline-flex align-items-center" href="{% url 'home' %}">
-                <img id="logo" src="{% static 'general/img/icon.png' %}" class="animate__animated animate__swing" alt="logo" width="50px"/>
-                <span id="project-name" class="ms-2 fs-1 fw-bold">{{ PROJECT_NAME }}</span>
-            </a>
-            <div id="account-area" class="text-end">
-                {% if user.is_authenticated %}
-                    <div>
-                        <p>{{ user }}</p>
-                        <p>{{ user.role }}</p>
-                    </div>
-                    <form action="{% url 'logout' %}" method="post">
-                        {% csrf_token %}
-                        <input type="submit" value="Выход"/>
-                    </form>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</header>
-{% endcomment %}    
-
 <div class="container">
     <h1>{% block h %} {% endblock %}</h1>
     {% include "messages/tagged_messages.html" %}
