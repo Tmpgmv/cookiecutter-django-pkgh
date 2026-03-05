@@ -26,5 +26,9 @@
   "student_slug": "{{ cookiecutter.surname_initials_lat.lower()|replace('-', '_')|replace('.', '')|replace(' ', '_')|trim() }}",
   "_copy_without_render": [
       "**/*.html"
+        "*.png",
+        "*.jpg",
+        "*.ico",
+        "assets/*"    
   ]
 }
