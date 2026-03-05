@@ -26,9 +26,9 @@
             
             <div id="account-area" class="text-end">
                 {% if user.is_authenticated %}
-                <div class="d-flex align-items-center gap-2 mb-1">
+                <div class="align-items-center gap-2 mb-1">
                     <p class="mb-0">{{ user }}</p>
-                    <p class="mb-0 text-muted">| {{ user.role }}</p>
+                    <p class="mb-0 text-muted">{{ user.role }}</p>
                 </div>
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
