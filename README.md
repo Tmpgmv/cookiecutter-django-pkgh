@@ -8,6 +8,13 @@
 Cookiecutter должен быть установлен system wide, 
 т.е. не в виртуальном окружении.
 
+
+Windows:
+```bash
+$env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
+```
+
+Linux:
 ```bash
 PYTHONIOENCODING=utf-8 LANG=C.UTF-8 uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
 ```
