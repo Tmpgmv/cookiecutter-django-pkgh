@@ -14,6 +14,33 @@
 </head>
 <body class="body-font-customized body-background-customized">
 
+
+<header>
+    <div class="container p-3 aux-background-color">
+        
+        <div class="d-flex justify-content-between align-items-center">
+            <a class="logo-hyperlink d-inline-flex align-items-center" href="{% url 'home' %}">
+                <img id="logo" src="{% static 'general/img/icon.png' %}" class="animate__animated animate__swing" alt="logo" width="50px"/>
+                <span id="project-name" class="ms-2 fs-1 fw-bold">{{ PROJECT_NAME }}</span>
+            </a>
+            
+            <div id="account-area" class="text-end">
+                {% if user.is_authenticated %}
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <p class="mb-0">{{ user }}</p>
+                    <p class="mb-0 text-muted">| {{ user.role }}</p>
+                </div>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-sm btn-outline-danger" value="Выход"/>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
+{% comment %}    
 <header>
     <div class="container p-3 aux-background-color">
         <a class="d-flex justify-content-between">
@@ -36,6 +63,7 @@
         </div>
     </div>
 </header>
+{% endcomment %}    
 
 <div class="container">
     <h1>{% block h %} {% endblock %}</h1>
