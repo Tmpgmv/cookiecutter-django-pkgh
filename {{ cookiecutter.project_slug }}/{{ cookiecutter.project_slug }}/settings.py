@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-from .cookiecutter_const import *
+from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 
 from django.urls import reverse_lazy  # PREP
