@@ -47,8 +47,7 @@ INSTALLED_APPS = [
     "accounts",
     # } PREP
 
-    # STUD! {
-    "offices",
+    # STUD! {    
     # } STUD!
 
     # PREP {
