@@ -26,7 +26,7 @@ https://getbootstrap.com/docs/5.3/utilities/spacing/#gap
 
 
 
-<div style="grid-template-columns: 4fr 1fr;" class="d-grid mb-3 mt-3 gap-3 position-relative attention-border">
+<div style="grid-template-columns: 4fr 1fr;" class="d-grid mb-3 mt-3 gap-3 {% if not user.is_superuser %}pb-3{% endif %} position-relative attention-border">
     <div class="p-2 ms-3 mt-3 attention-border">
         <p class="fw-bold">Grid item 2</p>
         <p>Grid item 2</p>
