@@ -30,6 +30,6 @@
         "*.jpg",
         "*.ico",
         "*.drawio",
-        "assets/*"    
+        "*.ttf"        
   ]
 }
