@@ -13,12 +13,12 @@ Cookiecutter должен быть установлен system wide,
 $env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; uv tool run cookiecutter 'http://gogs.wsr.ru:3000/grab/cookiecutter-django-pkgh.git' custom_user=y login_required=y tests_required=n
 ```
 
-Windows:
+Вне колледжа. Windows:
 ```bash
 $env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
 ```
 
-Linux:
+Вне колледжа. Linux:
 ```bash
 PYTHONIOENCODING=utf-8 LANG=C.UTF-8 uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
 ```
