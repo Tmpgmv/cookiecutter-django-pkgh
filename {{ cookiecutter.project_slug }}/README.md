@@ -22,9 +22,9 @@ python -m venv .venv
 source .venv/bin/activate # Linux/MacOS
 ```
 
-## Установка
+## Установка зависимостей
 ```bash 
-python -m pip install -r requirements.txt
+pip install --no-index --find-links=D:\Grablevskiy\dependencies -r requirements.txt
 ```
 
 ## Применение миграций
