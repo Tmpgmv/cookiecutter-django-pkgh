@@ -23,7 +23,7 @@ class HomePageTest(TestCase):
 
     def test_home_page_contains_project_name(self):
         """
-        На страницу home присутствует ли название проекта?
+        На странице home присутствует ли название проекта?
         """
         {% if cookiecutter.login_required %}
         self.client.login(username='testuser', password='testpass')
