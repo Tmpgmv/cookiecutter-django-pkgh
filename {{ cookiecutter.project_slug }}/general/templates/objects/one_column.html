@@ -36,7 +36,7 @@ https://getbootstrap.com/docs/5.3/utilities/spacing/#gap
 
         {% comment %}
         {% if user.is_superuser %}
-            <a class="btn del-button position-absolute z-3" href="">{% bs_icon 'trash' %}</a>
+            <a class="btn del-button position-absolute z-3" href="{# PREP {% url 'object_delete' object.pk %} #}">{% bs_icon 'trash' %}</a>
         {% endif %}
         {% endcomment %}
     </div>
