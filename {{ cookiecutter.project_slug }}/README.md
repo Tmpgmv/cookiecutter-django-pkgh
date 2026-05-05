@@ -24,7 +24,7 @@ source .venv/bin/activate # Linux/MacOS
 
 ## Установка зависимостей
 ```bash 
-pip install --no-index --find-links=D:\Grablevskiy\dependencies -r requirements.txt
+pip install --no-index --find-links=D:\dependencies -r requirements.txt
 ```
 
 ## Применение миграций
