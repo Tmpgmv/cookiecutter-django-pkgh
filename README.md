@@ -19,6 +19,13 @@ pip install uv
 
 Установите Cookiecutter глобально (или в свой venv).
 
+
+В колледже:
+```bash
+pip install --no-index --find-links=D:\dependencies cookiecutter
+```
+
+Вне колледжа:
 ```bash
 pip install cookiecutter
 ```
