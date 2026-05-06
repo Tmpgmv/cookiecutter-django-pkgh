@@ -17,7 +17,7 @@ pip install uv
 -->
 ## Разворачивание проекта из шаблона
 
-Установите Cookiecutter в свой venv.
+**Установите Cookiecutter в свой venv:**
 
 
 В колледже:
@@ -29,6 +29,8 @@ pip install --no-index --find-links=D:\dependencies cookiecutter
 ```bash
 pip install cookiecutter
 ```
+
+**Разверните проект из шаблона:**
 
 В колледже:
 ```bash
