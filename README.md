@@ -25,10 +25,6 @@ pip install uv
 pip install --no-index --find-links=D:\dependencies -r D:\dependencies\requirements.txt
 ```
 
-Вне колледжа:
-```bash
-pip install cookiecutter
-```
 
 **Разверните проект из шаблона:**
 
@@ -45,6 +41,11 @@ $env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; python -m cookiecutter g
 Вне колледжа. Linux:
 ```bash
 PYTHONIOENCODING=utf-8 LANG=C.UTF-8 python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
+```
+
+Вне колледжа:
+```bash
+pip install -r requirements.txt
 ```
 
 <!--
