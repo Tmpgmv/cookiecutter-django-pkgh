@@ -27,7 +27,7 @@ from home.views import HomeView
 
 urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
-    {% if cookiecutter.login_required %}
+    {% if cookiecutter.login_required == true or cookiecutter.login_required == 'y' or cookiecutter.login_required.default == true %}
     path("", login_required(HomeView.as_view()), name="home"),
     {% else %}
     path("", HomeView.as_view(), name="home"),
