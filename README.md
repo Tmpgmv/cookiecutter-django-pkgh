@@ -47,6 +47,10 @@ $env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; python -m cookiecutter g
 PYTHONIOENCODING=utf-8 LANG=C.UTF-8 python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
 ```
 
+```bash
+python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh --config-file config.yaml --no-input
+```
+
 Вне колледжа:
 ```bash
 pip install -r requirements.txt
