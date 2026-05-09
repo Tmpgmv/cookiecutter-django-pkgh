@@ -175,3 +175,40 @@ python manage.py makemigrations
 ```bash
 python manage.py migrate
 ```
+
+
+## Сброс последовательностей
+
+```bash
+DO $$
+DECLARE
+    r RECORD;
+    max_id BIGINT;
+    seq_name TEXT;
+BEGIN
+    -- Loop through all columns that have an owned sequence (serial / identity / nextval)
+    FOR r IN 
+        SELECT 
+            tc.table_schema,
+            tc.table_name,
+            tc.column_name,
+            pg_get_serial_sequence(quote_ident(tc.table_schema) || '.' || quote_ident(tc.table_name), tc.column_name) AS sequence_name
+        FROM information_schema.columns tc
+        WHERE tc.table_schema NOT IN ('pg_catalog', 'information_schema') -- Skip system schemas
+          AND pg_get_serial_sequence(quote_ident(tc.table_schema) || '.' || quote_ident(tc.table_name), tc.column_name) IS NOT NULL
+    LOOP
+        -- Get the current MAX value from the table safely
+        EXECUTE format('SELECT COALESCE(MAX(%I), 0) FROM %I.%I', 
+                       r.column_name, r.table_schema, r.table_name) INTO max_id;
+
+        -- If the table has rows, update the sequence to point to the MAX(id)
+        -- The next nextval() call will automatically return MAX(id) + 1
+        IF max_id > 0 THEN
+            EXECUTE format('SELECT setval(%L, %s, true)', r.sequence_name, max_id);
+        ELSE
+            -- If the table is completely empty, reset the sequence to start at 1
+            EXECUTE format('SELECT setval(%L, 1, false)', r.sequence_name);
+        END IF;
+    END LOOP;
+END $$;
+```
