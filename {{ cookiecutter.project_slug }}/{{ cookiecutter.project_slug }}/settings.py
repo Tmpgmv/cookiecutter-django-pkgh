@@ -100,10 +100,7 @@ DATABASES = {
         "USER": secret.DB_USER,
         "PASSWORD": secret.DB_PASS,
         "HOST": "{{ cookiecutter.db_host }}",
-        "PORT": "5432",
-        'TEST': {
-            'MIRROR': 'default',  # Проводить тесты в той же базе данных.
-        },        
+        "PORT": "5432",       
     }
 }
 {% else -%}
