@@ -34,7 +34,7 @@ $env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; python -m cookiecutter '
 ```
 
 ```bash
-python -m cookiecutter 'http://gogs.wsr.ru:3000/grab/cookiecutter-django-pkgh.git' --config-file config.yaml --no-input
+python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh --config-file D:\dependencies\config.yaml --no-input
 ```
 
 Вне колледжа. Windows:
