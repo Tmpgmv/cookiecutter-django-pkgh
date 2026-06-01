@@ -33,6 +33,13 @@ pip install --no-index --find-links=D:\dependencies -r D:\dependencies\requireme
 $env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; python -m cookiecutter 'http://gogs.wsr.ru:3000/grab/cookiecutter-django-pkgh.git' custom_user=y login_required=y tests_required=n
 ``` -->
 
+В колледже:
+```bash
+python -m cookiecutter 'http://gogs.wsr.ru:3000/grab/cookiecutter-django-pkgh.git' --config-file D:\dependencies\config.yaml --no-input
+```
+
+
+Вне колледжа:
 ```bash
 python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh --config-file D:\dependencies\config.yaml --no-input
 ```
