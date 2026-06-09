@@ -27,11 +27,6 @@ pip install --no-index --find-links=D:\dependencies -r D:\dependencies\requireme
 
 
 **Разверните проект из шаблона:**
-<!--
-В колледже:
-```bash
-$env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; python -m cookiecutter 'http://gogs.wsr.ru:3000/grab/cookiecutter-django-pkgh.git' custom_user=y login_required=y tests_required=n
-``` -->
 
 В колледже:
 ```bash
@@ -43,66 +38,6 @@ python -m cookiecutter 'http://gogs.wsr.ru:3000/grab/cookiecutter-django-pkgh.gi
 ```bash
 python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh --config-file D:\dependencies\config.yaml --no-input
 ```
-<!--
-Вне колледжа. Windows:
-```bash
-$env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
-```
-
-Вне колледжа. Linux:
-```bash
-PYTHONIOENCODING=utf-8 LANG=C.UTF-8 python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
-```
-
-```bash
-python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh --config-file config.yaml --no-input
-```
-
-Вне колледжа:
-```bash
-pip install -r requirements.txt
-``` -->
-
-<!--
-В колледже:
-```bash
-$env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; uv tool run cookiecutter 'http://gogs.wsr.ru:3000/grab/cookiecutter-django-pkgh.git' custom_user=y login_required=y tests_required=n
-```
-
-```bash
-python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh --config-file config.yaml --no-input
-```
-
-Вне колледжа. Windows:
-```bash
-$env:PYTHONIOENCODING="utf-8"; $env:LANG="ru_RU.UTF-8"; uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
-```
-
-Вне колледжа. Linux:
-```bash
-PYTHONIOENCODING=utf-8 LANG=C.UTF-8 uv tool run cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh custom_user=y login_required=y tests_required=n
-```
--->
-
-NB! Когда вы копируете текст из браузера (особенно из GitHub), пробел между словами может 
-быть не обычным пробелом (ASCII код 32), а специальным символом Юникода U+00A0 
-(non-breaking space).
-
-Однако uv или сам python при чтении аргументов командной строки натыкается на байт 0xC2 0xA0 
-(так выглядит неразрывный пробел в UTF-8).
-
-Если библиотека обработки аргументов (в данном случае cookiecutter) ожидает только 
-стандартные ASCII-разделители, происходит сбой декодирования.
-
-Иначе говоря, типичная ошибка: UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd1... 
-как раз говорит о том, что парсер "споткнулся" на байте, который он не ожидал увидеть в этой позиции.
-
-Вывод: 
-
-"Очистка" черрез адресную строку: вставьте скопированную команду в адресную строку браузера Chrome, 
-а затем скопируйте её оттуда. Браузер нормализуют такие символы.
-
-Теперь вставляйте в терминал.
 
 
 ## Комментарий
