@@ -5,6 +5,11 @@
   --attention-color: {{ cookiecutter.attention_color }}; /* Акцентирование внимания */
 }
 
+body {
+  overflow-wrap: anywhere; 
+  word-break: normal;
+}
+
 .message-box {
     border-radius: 6px;
     border: 1px solid transparent;
