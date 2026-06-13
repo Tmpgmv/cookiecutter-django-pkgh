@@ -36,6 +36,11 @@
                     {% csrf_token %}
                     <input type="submit" class="btn btn-sm btn-outline-danger" value="Выход"/>
                 </form>
+                <div class="back mt-2">
+                    {% if request.META.HTTP_REFERER and request.META.HTTP_REFERER != request.build_absolute_uri %}
+                    <a href="{{ request.META.HTTP_REFERER }}" class="btn attention">Назад</a>
+                    {% endif %}
+                </div>
                 {% endif %}
             </div>
         </div>
