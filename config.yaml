@@ -10,5 +10,5 @@ default_context:
     aux_background_color: "#7FFF00"
     attention_color: "#00FA9A"
     custom_user: "y"
-    login_required: "n"
+    login_required: "y"
     tests_required: "n"
