@@ -1,8 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
-from django.conf import settings
-from django.db import OperationalError, transaction
+from django.db import OperationalError, transaction, IntegrityError
 
 User = get_user_model()  # UNIVERSAL: works with any AUTH_USER_MODEL
 
@@ -74,6 +73,8 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR("python manage.py makemigrations"))
             self.stdout.write(self.style.ERROR("python manage.py migrate"))
         except IntegrityError as e:
-            pass # Выявлены дубли. Ничего не предпринимаем.
+            self.stdout.write(self.style.ERROR("❌ " + e))
+            self.stdout.write(self.style.ERROR("Выявлены дубли"))
+            self.stdout.write(self.style.ERROR("Вы забыли сбросить последовательность?"))
 
         self.stdout.write(self.style.SUCCESS('Завершено!'))
