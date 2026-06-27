@@ -67,13 +67,13 @@ class Command(BaseCommand):
                 self.create_users()
                 self.assign_groups_to_users(groups)
         except OperationalError as e:
-            self.stdout.write(self.style.ERROR("❌ " + e))
+            self.stdout.write(self.style.ERROR("❌ " + str(e)))
             self.stdout.write(self.style.ERROR("========="))
             self.stdout.write(self.style.ERROR("Попробуйте"))
             self.stdout.write(self.style.ERROR("python manage.py makemigrations"))
             self.stdout.write(self.style.ERROR("python manage.py migrate"))
         except IntegrityError as e:
-            self.stdout.write(self.style.ERROR("❌ " + e))
+            self.stdout.write(self.style.ERROR("❌ " + str(e)))
             self.stdout.write(self.style.ERROR("Выявлены дубли"))
             self.stdout.write(self.style.ERROR("Вы забыли сбросить последовательность?"))
 
