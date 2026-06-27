@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     USER_GROUP = {
         "a": "Администратор",
-        "c": "Авторизированный клиент",
+        "c": "Авторизованный пользователь",
         "m": "Менеджер",
         "g": "Гость",
     }
@@ -28,35 +28,30 @@ class Command(BaseCommand):
 
         return groups
 
-
     def create_users(self):
         USERS = ["a", "c", "m", "g"]
 
         for username in USERS:
+            # Общие данные для всех пользователей
+            user_data = {
+                'username': username,
+                'email': f'{username}@{username}.ru',
+                'password': username,
+                'first_name': username,
+            }
+
+            # Создаём суперпользователя или обычного пользователя
             if username == "a":
-                User.objects.create_superuser(
-                    username=username,
-                    email=f'{username}@{username}.ru',
-                    password=username,
-                    first_name=username,
-                )
-
-                print("Создан пользователь: " + username)
+                User.objects.create_superuser(**user_data)
             else:
-                User.objects.create_user(
-                        username=username,
-                        email=f'{username}@{username}.ru',
-                        password=username,
-                        first_name=username,
-                    )
-                print("Создан пользователь: " + username)
+                User.objects.create_user(**user_data)
 
+            print("Создан пользователь: " + username)
 
     def assign_groups_to_users(self, groups):
         for username, group in groups.items():
             user = User.objects.get(username=username)
             user.groups.add(group)
-
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS('Начало создания пользователей и групп!'))
