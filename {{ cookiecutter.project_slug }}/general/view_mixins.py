@@ -8,7 +8,7 @@ class ConcurrentUpdateMixin:
         except (RecordModifiedError, VersionChangedError, VersionError):
 
             form.add_error(None,
-                           "⚠️ Товар изменён другим пользователем! "
+                           "⚠️ Объект изменён другим пользователем! "
                            "Вернитесь в список и откройте заново."
                            )
             return self.form_invalid(form)
