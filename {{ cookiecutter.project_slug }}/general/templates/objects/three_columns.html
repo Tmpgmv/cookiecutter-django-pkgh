@@ -10,7 +10,7 @@ PREP См. комментарий к two_columns.html.
 
 {% endcomment %}
 
-<div style="grid-template-columns: 1fr 3fr 1fr;" class="d-grid mb-3 mt-3 {% if not user.is_superuser %}pb-3{% endif %} gap-3 position-relative attention-border">
+<div style="grid-template-columns: 1fr 3fr 1fr;" class="d-grid mb-3 mt-3 {% if not user.is_admin %}pb-3{% endif %} gap-3 position-relative attention-border">
     <div class="p-2 ms-3 mt-3 attention-border d-flex justify-content-center align-items-center">
         <img src="{% static 'general/img/icon.png' %}" class="article-img" alt="img">
     </div>
@@ -24,11 +24,11 @@ PREP См. комментарий к two_columns.html.
         <p>Grid item 3</p>
         <p>Grid item 3</p>
 
-        {% if user.is_superuser %}
-            {% comment %}<a class="btn del-button position-absolute z-3" href="{{ object.get_delete_url }}">{% bs_icon 'trash' %}</a>{% endcomment %}
+        {% if user.is_admin %}
+            {% comment %}<a class="btn del-button position-absolute z-3" href="{{ item.get_delete_url }}">{% bs_icon 'trash' %}</a>{% endcomment %}
         {% endif %}
     </div>
-    {% if user.is_superuser %}
-        <a href="{# PREP {{ object.get_update_url }} #}" class="stretched-link"></a>
+    {% if user.is_admin %}
+        <a href="{# PREP {{ item.get_update_url }} #}" class="stretched-link"></a>
     {% endif %}
 </div>

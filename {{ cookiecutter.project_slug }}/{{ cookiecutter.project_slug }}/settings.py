@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 from django.utils.translation import gettext_lazy as _
 from pathlib import Path
+import os
 
 from django.urls import reverse_lazy  # PREP
 from . import secret
@@ -72,6 +73,7 @@ ROOT_URLCONF = "{{ cookiecutter.project_slug }}.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -157,6 +159,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 # PREP {
 
 MEDIA_URL = "media/"
@@ -172,5 +178,7 @@ LOGOUT_REDIRECT_URL = reverse_lazy("login")
 {% if cookiecutter.custom_user %}
 AUTH_USER_MODEL = 'accounts.User'
 {% endif %}
+
+BS_ICONS_BASE_PATH = os.path.join(BASE_DIR, "general/static/general/img/bootstrap-icons")
 
 # } PREP

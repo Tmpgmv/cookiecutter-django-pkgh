@@ -1,8 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group
 from django.contrib.auth import get_user_model
-from django.conf import settings
-from django.db import OperationalError, transaction
+from django.db import OperationalError, transaction, IntegrityError
 
 User = get_user_model()  # UNIVERSAL: works with any AUTH_USER_MODEL
 
@@ -12,7 +11,7 @@ class Command(BaseCommand):
 
     USER_GROUP = {
         "a": "Администратор",
-        "c": "Авторизированный клиент",
+        "c": "Авторизованный пользователь",
         "m": "Менеджер",
         "g": "Гость",
     }
@@ -29,35 +28,30 @@ class Command(BaseCommand):
 
         return groups
 
-
     def create_users(self):
         USERS = ["a", "c", "m", "g"]
 
         for username in USERS:
+            # Общие данные для всех пользователей
+            user_data = {
+                'username': username,
+                'email': f'{username}@{username}.ru',
+                'password': username,
+                'first_name': username,
+            }
+
+            # Создаём суперпользователя или обычного пользователя
             if username == "a":
-                User.objects.create_superuser(
-                    username=username,
-                    email=f'{username}@{username}.ru',
-                    password=username,
-                    first_name=username,
-                )
-
-                print("Создан пользователь: " + username)
+                User.objects.create_superuser(**user_data)
             else:
-                User.objects.create_user(
-                        username=username,
-                        email=f'{username}@{username}.ru',
-                        password=username,
-                        first_name=username,
-                    )
-                print("Создан пользователь: " + username)
+                User.objects.create_user(**user_data)
 
+            print("Создан пользователь: " + username)
 
     def assign_groups_to_users(self, groups):
         for username, group in groups.items():
             user = User.objects.get(username=username)
             user.groups.add(group)
-
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS('Начало создания пользователей и групп!'))
@@ -68,12 +62,14 @@ class Command(BaseCommand):
                 self.create_users()
                 self.assign_groups_to_users(groups)
         except OperationalError as e:
-            self.stdout.write(self.style.ERROR("❌ " + e))
+            self.stdout.write(self.style.ERROR("❌ " + str(e)))
             self.stdout.write(self.style.ERROR("========="))
             self.stdout.write(self.style.ERROR("Попробуйте"))
             self.stdout.write(self.style.ERROR("python manage.py makemigrations"))
             self.stdout.write(self.style.ERROR("python manage.py migrate"))
         except IntegrityError as e:
-            pass # Выявлены дубли. Ничего не предпринимаем.
+            self.stdout.write(self.style.ERROR("❌ " + str(e)))
+            self.stdout.write(self.style.ERROR("Выявлены дубли"))
+            self.stdout.write(self.style.ERROR("Вы забыли сбросить последовательность?"))
 
         self.stdout.write(self.style.SUCCESS('Завершено!'))
