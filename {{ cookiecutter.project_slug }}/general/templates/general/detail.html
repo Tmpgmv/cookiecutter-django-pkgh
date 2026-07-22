@@ -1,15 +1,24 @@
+{% extends 'general/base.html' %}
+{% load static %}
 {% load model_filters %}
+{% load bootstrap_icons %}
 
-{% comment %}
-PREP
 
-Шаблон для DetailView.
-Позволяет сразу отобразить пользователю все поля.
+{% block title %}
+    {{ view.get_verbose_name }}
+{% endblock %}
 
-Применение в шаблоне:
-{% include 'general/detail.html' %}
+{% block h %}
+    {{ view.get_verbose_name }}
+{% endblock %}
 
-{% endcomment %}
+
+{% block content %}
+
+<div class="container mb-3">
+    <a href="{{ object.get_update_url }}" class="btn attention mt-2 mb-2">{% bs_icon 'pencil-fill' %}</a>
+    <a href="{{ object.get_delete_url }}" class="btn attention del-button mt-2 mb-2">{% bs_icon 'trash' %}</a>
+</div>
 
 <div class="container">
 
@@ -33,3 +42,4 @@ PREP
         {% endfor %}
     </div>
 </div>
+{% endblock %}
