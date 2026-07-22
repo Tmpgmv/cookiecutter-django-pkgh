@@ -60,7 +60,7 @@ python -m cookiecutter gh:Tmpgmv/cookiecutter-django-pkgh --config-file D:\depen
 
 **`db_password`** - Пароль пользователя БД. См. secret.py.
 
-**`project_name_rus`** - Наименование проекта на русском языке. Может применяться в шаблонах (см. context_processors.py). Также попадает в документацию проекта (README.md).
+**`project_name_rus`** - Наименование проекта на русском языке. Может применяться в шаблонах (см. context_processors.py). Если надо что-то в кавычках: project_name_rus: "ООО \"Аэропорт Таймыр\"" . 
 
 **`project_name_lat`** - Наименование проекта на латинице. Применяется только в cookiecutter.json для формирования project_slug.
 
