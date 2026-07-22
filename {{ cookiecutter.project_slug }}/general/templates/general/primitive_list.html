@@ -1,0 +1,58 @@
+{% extends 'general/base.html' %}
+{% load static %}
+{% load model_filters %}
+
+
+{% block title %}
+{{ view.get_verbose_name_plural }}
+{% endblock %}
+
+{% block h %}
+{{ view.get_verbose_name_plural }}
+{% endblock %}
+
+
+{% block content %}
+
+
+{% for object in object_list %}
+
+<div style="grid-template-columns: 1fr;"
+     class="d-grid mb-3 mt-3 {% if not user.is_admin %}pb-3{% endif %} position-relative attention-border">
+
+    <div class="p-2 ms-3 mt-3 me-3 mb-3 attention-border position-relative">
+        {% for field in object|get_fields %}
+        <div class="col-12">
+
+            <p>
+                <strong>{{ field.label }}: </strong>
+
+                {% if field.is_image and field.value %}
+                    <img src="{{ field.value.url }}" alt="{{ field.label }}">
+                {% else %}
+                    {{ field.value|default:"—" }}
+                {% endif %}
+
+            </p>
+
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <a href="{{ object.get_absolute_url }}" class="stretched-link"></a>
+</div>
+
+{% empty %}
+<p>Нет данных.</p>
+{% endfor %}
+
+
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}
+
