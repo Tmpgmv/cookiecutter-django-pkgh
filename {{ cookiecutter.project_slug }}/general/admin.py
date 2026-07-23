@@ -6,6 +6,27 @@ import re
 class BaseAdmin(admin.ModelAdmin):
     """
     Универсальный базовый класс для обработки ошибок сохранения.
+
+    Причина создания: задание для 09.02.11 может предусматривать разработку триггеров.
+    Триггер будет содержать что-то вроде RAISE EXCEPTION,
+    а административная панель Django к такому не готова совершенно.
+
+    Применять в admin.py. Пример:
+
+    from django.contrib import admin
+
+    from general.admin import BaseAdmin
+    from maintenance_procedures.models import MaintenanceProcedure
+    
+    
+    
+    class MaintenanceProcedureAdmin(BaseAdmin):
+        exclude = []
+        list_display = ["date", "plane", "employee", "procedure", "result"]
+    
+    
+    admin.site.register(MaintenanceProcedure, MaintenanceProcedureAdmin)
+
     """
 
     def save_model(self, request, obj, form, change):
