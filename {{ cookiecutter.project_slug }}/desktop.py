@@ -7,24 +7,24 @@ from django.core.management import execute_from_command_line
 
 
 def start_django():
-    """Starts the Django development server in a background thread."""
+    # Запускает отдалочный сервер Django в фоновом потоке.    
     os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                          'marverl_boots.settings')  # <-- CHANGE 'myproject' to your actual project name
-
-    # Force Django to run without the auto-reloader to avoid breaking threads
+                          '{{ cookiecutter.project_slug }}.settings')
+    
+    # Запуск отладочного сервера без перезагрузки.    
     sys.argv = ['manage.py', 'runserver', '127.0.0.1:8000', '--noreload']
     execute_from_command_line(sys.argv)
 
 
 if __name__ == '__main__':
-    # 1. Start Django backend in the background
+    # 1. Запустить сервер Django в фоновом режиме (демон).
     django_thread = threading.Thread(target=start_django, daemon=True)
     django_thread.start()
 
-    # 2. Wait a brief moment for the Django server to spin up
+    # 2. Подождать, пока сервер Django запустится.
     time.sleep(1)
 
-    # 3. Open the native desktop window pointing to the local app
+    # 3. Открыть нативное десктопное окно.
     webview.create_window(
         title="Чудо-обувь",
         url="http://127.0.0.1:8000",
@@ -33,5 +33,5 @@ if __name__ == '__main__':
         resizable=True
     )
 
-    # 4. Start the GUI loop (closing this window kills the background Django server)
+    # 4. Запустить цикл GUI loop (закрытие этого окна остановит сервер Django, работающий в фоновом режиме).
     webview.start()
