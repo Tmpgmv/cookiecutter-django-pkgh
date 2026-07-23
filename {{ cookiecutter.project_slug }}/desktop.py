@@ -7,7 +7,17 @@ from django.core.management import execute_from_command_line
 
 
 def start_django():
-    # Запускает отдалочный сервер Django в фоновом потоке.    
+    """
+    Запустить веб-приложение на Django в качестве 
+    десктопного приложения.
+
+    https://pywebview.flowrl.com/
+
+    Использование: python desktop.py    
+    """
+
+
+    
     os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                           '{{ cookiecutter.project_slug }}.settings')
     
@@ -26,7 +36,7 @@ if __name__ == '__main__':
 
     # 3. Открыть нативное десктопное окно.
     webview.create_window(
-        title="Чудо-обувь",
+        title="{{ cookiecutter.project_name_rus }}",
         url="http://127.0.0.1:8000",
         width=1024,
         height=768,
