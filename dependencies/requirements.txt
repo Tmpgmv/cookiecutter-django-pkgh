@@ -10,5 +10,5 @@ django-jquery==3.1.0 # https://pypi.org/project/django-jquery/
 psycopg2-binary==2.9.11
 django-concurrency==2.7 # https://django-concurrency.readthedocs.io/en/latest/
 selenium==4.40.0
-pywebview==6.2.1
+pywebview==6.2.1 # https://pywebview.flowrl.com/
 # } PREP
