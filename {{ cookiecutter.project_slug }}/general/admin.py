@@ -22,8 +22,6 @@ class BaseAdmin(admin.ModelAdmin):
     
     class MaintenanceProcedureAdmin(BaseAdmin):
         exclude = []
-        list_display = ["date", "plane", "employee", "procedure", "result"]
-    
     
     admin.site.register(MaintenanceProcedure, MaintenanceProcedureAdmin)
 
