@@ -33,6 +33,8 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     {% endif %}
     path("admin/", admin.site.urls),
+    path("admin-react/", include("django_admin_react.urls")),
+    path("admin-api/", include("django_admin_rest_api.urls")),
 ]
 
 urlpatterns += i18n_patterns(
