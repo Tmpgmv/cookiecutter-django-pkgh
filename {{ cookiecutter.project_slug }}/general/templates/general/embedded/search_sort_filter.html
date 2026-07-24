@@ -1,6 +1,7 @@
 {% load static %} 
 
 {% comment %} 
+
 Связка: 
 general/embedded/search_sort_filter.html
 general/forms.py - SearchSortFilterForm
@@ -9,27 +10,23 @@ general/js/search-sort-filter.js
 general/base.html - возможно, потребуется раскомментировать загрузку 
 search-sort-filter.js.
 
-{% endcomment %}
 
-{% load bootstrap_icons %}
-
-{% comment %}
-PREP
 В заданиях может встретиться требование задать фильтрацию,
 сортировку или поиск.
 
 Если задание потребует автоматической отправки формы (без нажатия кнопки):
-1. Удалить кнопку из этого шаблона
-2. В базовом шаблоне раскомментировать
+1. Удалить кнопку "Отправить" из этого шаблона.
+2. В базовом шаблоне раскомментировать загрузку search-sort-filter.js.
 3. Проверить search-sort-filter.js - посмотреть, какие в форме отрендерились id,
 при необходимости прописать обработчики событий.
-
 
 Применение в шаблоне:
 {% include 'general/embedded/search_sort_filter.html' %}
 
+
 {% endcomment %}
 
+{% load bootstrap_icons %}
 
 {% if user.is_admin or user.is_manager %}
 <style>
