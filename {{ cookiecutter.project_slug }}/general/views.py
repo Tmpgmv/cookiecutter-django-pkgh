@@ -76,6 +76,8 @@ class {model_name_capitalized}DeleteView(SuccessMessageMixin,
 
 
 
+
+
 from django.contrib import admin
 from general.admin import BaseAdmin
 
@@ -83,6 +85,7 @@ class {model_name_capitalized}Admin(BaseAdmin):
     exclude = []
 
 admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
+
 
 
 
