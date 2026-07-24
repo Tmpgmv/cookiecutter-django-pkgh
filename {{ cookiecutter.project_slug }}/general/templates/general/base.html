@@ -33,8 +33,13 @@
 
 <script src="{% static 'general/js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
-<script src="{% static 'general/js/js.js' %}"></script>
-{% block script %}{% endblock %}
+
+{% comment %} Автоматическая отправка формы фильтрации, сортировки и поиска. Раскомментировать по необходимости. {% endcomment %}      
+{% comment %} См. комментарий search-sort-filter.js {% endcomment %}
+{% comment %}<script src="{% static 'general/js/search-sort-filter.js' %}"></script>{% endcomment %}
+
+{% block script %}
+{% endblock %}
 </body>
 </html>
 
