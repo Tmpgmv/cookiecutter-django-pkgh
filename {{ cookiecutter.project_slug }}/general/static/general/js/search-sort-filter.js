@@ -1,4 +1,4 @@
-$('#id_stock, #id_supplier').on('change', function() {
+$('#id_sort, #id_filter').on('change', function() {
         $('#search-sort-filter').submit();
     });
 
