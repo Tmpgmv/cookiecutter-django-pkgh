@@ -16,9 +16,9 @@ template_name = "general/pages/form.html"
 
 {% block h %}
     {% if object %}
-        Редактировать {{ view.get_verbose_name }}: {{ object }}
+        Редактировать {{ view.get_verbose_name|lower }}: {{ object }}
     {% else %}
-        Добавить {{ view.get_verbose_name }}
+        Добавить {{ view.get_verbose_name|lower }}
     {% endif %}
 {% endblock %}
 
