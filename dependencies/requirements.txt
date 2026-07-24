@@ -12,4 +12,5 @@ django-concurrency==2.7 # https://django-concurrency.readthedocs.io/en/latest/
 selenium==4.40.0
 pywebview==6.2.1 # https://pywebview.flowrl.com/
 django-admin-react==1.13.1 # https://pypi.org/project/django-admin-react/
+django-admin-rest-api==1.8.1 # https://pypi.org/project/django-admin-rest-api/
 # } PREP
