@@ -1,8 +1,6 @@
 {% comment %}
-  Применяется совместно с 
-
-search-sort-filter.js
-
+  Форма фильтрации, сортировки и поиска.
+  См. комментарий в templates/general/embedded/search_sort_filter.html
 {% endcomment %}
 
 
