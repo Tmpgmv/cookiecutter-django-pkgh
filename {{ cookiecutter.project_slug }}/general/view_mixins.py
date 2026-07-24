@@ -48,6 +48,7 @@ class GetVerboseNameMixin:
     этого класса наряду ListView, CreateView, UpdateView, DeleteView).
     2. urlpatterns. Обязательно называть по образцу в urls.py.
     3. Шаблон. В частности, general/pages/list.html.            
+    4. Модели должны наследовать от TypicalUrlMixin.
     """
 
 
