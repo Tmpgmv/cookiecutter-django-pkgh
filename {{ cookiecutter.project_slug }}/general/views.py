@@ -34,16 +34,12 @@ path("{model_name_lower}/create", {model_name_capitalized}CreateView.as_view(), 
 
 
 from django.contrib.messages.views import SuccessMessageMixin
-
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, UpdateView, CreateView, DeleteView
-
 from general.view_mixins import GetVerboseNameMixin
-#from planes.forms import PlaneForm
-from planes.models import {model_name_capitalized}
 
 
-class PlaneDetailView(GetVerboseNameMixin,
+class {model_name_capitalized}DetailView(GetVerboseNameMixin,
                       DetailView):
     model = {model_name_capitalized}
     template_name = "general/pages/detail.html"
@@ -69,7 +65,7 @@ class {model_name_capitalized}CreateView(SuccessMessageMixin,
     template_name = "general/pages/form.html"
 
 
-class PlaneDeleteView(SuccessMessageMixin,
+class {model_name_capitalized}DeleteView(SuccessMessageMixin,
                       GetVerboseNameMixin,
                       DeleteView):
     model = {model_name_capitalized}
@@ -78,6 +74,25 @@ class PlaneDeleteView(SuccessMessageMixin,
     template_name = "general/pages/confirm_delete.html"
 
 
+
+
+from django.contrib import admin
+from general.admin import BaseAdmin
+
+class {model_name_capitalized}Admin(BaseAdmin):
+    exclude = []
+
+admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
+
+
+
+
+
+class HomeView(GetVerboseNameMixin,
+               ListView):
+
+    model = {model_name_capitalized}
+    template_name = "general/pages/list.html"
 """
 
             response = HttpResponse(text_content.encode('utf-8'))
