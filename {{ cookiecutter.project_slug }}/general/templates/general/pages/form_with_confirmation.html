@@ -1,19 +1,26 @@
 {% load static %}
+{% extends 'general/base.html' %}
 
 {% comment %}
 PREP
 
-Применение в шаблоне:
-{% include 'general/form_with_confirmation.html' %}
-{% include 'general/form_with_confirmation.html' with button_text="Добавить в заказ" %}
+В представление CreateView или UpdateView добавьте:
 
-{% url 'order-product-create' as action_url %}
-{% include 'general/form_with_confirmation.html' with action=action_url %}
-{% include 'general/form_with_confirmation.html' with action=action_url button_text="Добавить в заказ" %}
+template_name = "general/pages/form_with_confirmation.html"
 
-{% endcomment %}
+{%endcomment%}
 
+{% load bootstrap_icons %}
 
+{% block h %}
+    Удалить {{ view.get_verbose_name }}: {{ object }}
+{% endblock %}
+
+{% block title %}
+    Удалить {{ view.get_verbose_name }}: {{ object }}
+{% endblock %}
+
+{% block content %}
 
 <html>
     <head>
@@ -59,3 +66,5 @@ document.getElementById('confirm-btn').addEventListener('click', function() {
 </script>
 
 </html>
+
+{% endblock %}
