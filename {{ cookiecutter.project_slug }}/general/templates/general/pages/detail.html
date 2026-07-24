@@ -14,11 +14,11 @@ template_name = "general/pages/detail.html"
 
 
 {% block title %}
-    {{ view.get_verbose_name }}
+    {{ view.get_verbose_name }}: {{ object }}
 {% endblock %}
 
 {% block h %}
-    {{ view.get_verbose_name }}
+    {{ view.get_verbose_name }}: {{ object }}
 {% endblock %}
 
 
