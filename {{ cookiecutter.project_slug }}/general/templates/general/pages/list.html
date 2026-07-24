@@ -1,4 +1,5 @@
 {% extends 'general/base.html' %}
+{% load bootstrap_icons %}
 
 {% comment %}
 
@@ -27,6 +28,13 @@ template_name = "general/pages/list.html"
 
 {% block content %}
 
+<div class="container mb-3">
+    {% if user.is_admin %}
+        {% with route=view.get_model_name|add:"_create" %}
+            <a href="{% url route %}" class="btn attention mt-2 mb-2">{% bs_icon 'plus-lg' %}</a>
+        {% endwith %}
+    {% endif %}
+</div>
 
 {% for object in object_list %}
 
