@@ -4,12 +4,12 @@
 PREP
 
 Применение в шаблоне:
-{% include 'general/embedded_form_with_confirmation.html' %}
-{% include 'general/embedded_form_with_confirmation.html' with button_text="Добавить в заказ" %}
+{% include 'general/embedded/form_with_confirmation.html' %}
+{% include 'general/embedded/form_with_confirmation.html' with button_text="Добавить в заказ" %}
 
 {% url 'order-product-create' as action_url %}
-{% include 'general/embedded_form_with_confirmation.html' with action=action_url %}
-{% include 'general/embedded_form_with_confirmation.html' with action=action_url button_text="Добавить в заказ" %}
+{% include 'general/embedded/form_with_confirmation.html' with action=action_url %}
+{% include 'general/embedded/form_with_confirmation.html' with action=action_url button_text="Добавить в заказ" %}
 
 {% endcomment %}
 
