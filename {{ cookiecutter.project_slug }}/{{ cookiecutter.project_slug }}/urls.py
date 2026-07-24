@@ -22,7 +22,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import path, include
 from django.conf import settings  # PREP
 from django.conf.urls.static import static  # PREP
-
+from general.views import UrlPatternView
 from home.views import HomeView
 
 """
@@ -30,12 +30,15 @@ from home.views import HomeView
     Чтобы все заработало, нужно URL для CRUD делать по образцу (в части path и name).
     Здесь модель называется Plane:
 
-urlpatterns = [
-    path("plane/detail/<int:pk>", PlaneDetailView.as_view(), name="plane_detail"),
-    path("plane/update/<int:pk>", PlaneUpdateView.as_view(), name="plane_update"),
-    path("plane/delete/<int:pk>", PlaneDeleteView.as_view(), name="plane_delete"),
-    path("plane/create", PlaneCreateView.as_view(), name="plane_create"),
-]
+    urlpatterns = [
+        path("plane/detail/<int:pk>", PlaneDetailView.as_view(), name="plane_detail"),
+        path("plane/update/<int:pk>", PlaneUpdateView.as_view(), name="plane_update"),
+        path("plane/delete/<int:pk>", PlaneDeleteView.as_view(), name="plane_delete"),
+        path("plane/create", PlaneCreateView.as_view(), name="plane_create"),
+    ]
+
+    Используйте вспомогательную утилиту http://127.0.0.1:8000/aux-url
+
 
 """
 
@@ -46,10 +49,11 @@ urlpatterns = [
     path("", login_required(HomeView.as_view()), name="home"),
     {% else %}
     path("", HomeView.as_view(), name="home"),
-    {% endif %}
+    {% endif %}    
     path("admin/", admin.site.urls),
     path("admin-react/", include("django_admin_react.urls")),
     path("admin-api/", include("django_admin_rest_api.urls")),
+    path("aux-url/", UrlPatternView.as_view(), name="aux_url"),
 ]
 
 urlpatterns += i18n_patterns(
