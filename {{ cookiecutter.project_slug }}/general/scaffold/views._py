@@ -27,7 +27,7 @@ class PlaneUpdateView(SuccessMessageMixin,
     form_class = PlaneForm
     success_message = "Сохранено."
     success_url = reverse_lazy("home")
-    template_name = "general/pages/form_with_confirmation.html"
+    template_name = "general/pages/form.html"
 
 
 class PlaneCreateView(SuccessMessageMixin,
@@ -37,7 +37,7 @@ class PlaneCreateView(SuccessMessageMixin,
     form_class = PlaneForm
     success_message = "Сохранено."
     success_url = reverse_lazy("home")
-    template_name = "general/pages/form_with_confirmation.html"
+    template_name = "general/pages/form.html"
 
 
 class PlaneDeleteView(SuccessMessageMixin,
