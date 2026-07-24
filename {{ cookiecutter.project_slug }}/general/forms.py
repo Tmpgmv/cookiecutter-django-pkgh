@@ -1,12 +1,10 @@
-{% comment %}
+"""
   Форма фильтрации, сортировки и поиска.
   См. комментарий в templates/general/embedded/search_sort_filter.html
 
   Эта форма требует доработки. Как минимум заменить Supplier на нужную модель,
   а также заменить label для сортировки и фильтрации.
-
-
-{% endcomment %}
+"""
 
 
 class SearchSortFilterForm(forms.Form):
