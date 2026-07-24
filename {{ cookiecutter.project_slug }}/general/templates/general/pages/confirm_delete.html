@@ -12,11 +12,11 @@ PREP
 {% load bootstrap_icons %}
 
 {% block h %}
-    Удаление
+    Удалить {{ view.get_verbose_name }}: {{ object }}
 {% endblock %}
 
 {% block title %}
-    Удаление
+    Удалить {{ view.get_verbose_name }}: {{ object }}
 {% endblock %}
 
 {% block content %}
@@ -30,7 +30,7 @@ PREP
         <div class="col-12 col-md-11">
             <form method="post">
                 {% csrf_token %}
-                <p>Удалить "{{ object }}"?</p>
+                <p>Удалить {{ view.get_verbose_name }}: {{ object }}"?</p>
                 {{ form }}
                 <input class="btn btn-primary" type="submit" value="Да">
                 <input class="btn btn-danger" type=button value="Нет" onClick="javascript:history.go(-1);">
