@@ -1,0 +1,48 @@
+"""
+Scaffold для набора представлений.
+"""
+
+
+from django.contrib.messages.views import SuccessMessageMixin
+
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, UpdateView, CreateView, DeleteView
+
+from general.view_mixins import GetVerboseNameMixin
+from planes.forms import PlaneForm
+from planes.models import Plane
+
+
+class PlaneDetailView(GetVerboseNameMixin,
+                      DetailView):
+    model = Plane
+    template_name = "general/pages/detail.html"
+
+
+class PlaneUpdateView(SuccessMessageMixin,
+                      GetVerboseNameMixin,
+                      UpdateView):
+    model = Plane
+    form_class = PlaneForm
+    success_message = "Сохранено."
+    success_url = reverse_lazy("home")
+    template_name = "general/pages/form_with_confirmation.html"
+
+
+class PlaneCreateView(SuccessMessageMixin,
+                      GetVerboseNameMixin,
+                      CreateView):
+    model = Plane
+    form_class = PlaneForm
+    success_message = "Сохранено."
+    success_url = reverse_lazy("home")
+    template_name = "general/pages/form_with_confirmation.html"
+
+
+class PlaneDeleteView(SuccessMessageMixin,
+                      GetVerboseNameMixin,
+                      DeleteView):
+    model = Plane
+    success_message = "Удалено."
+    success_url = reverse_lazy("home")
+    template_name = "general/pages/confirm_delete.html"
