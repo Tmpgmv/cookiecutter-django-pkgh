@@ -25,6 +25,21 @@ from django.conf.urls.static import static  # PREP
 
 from home.views import HomeView
 
+"""
+    См. комментарий в general/view_mixins.py.
+    Чтобы все заработало, нужно URL для CRUD делать по образцу (в части path и name).
+    Здесь модель называется Plane:
+
+urlpatterns = [
+    path("plane/detail/<int:pk>", PlaneDetailView.as_view(), name="plane_detail"),
+    path("plane/update/<int:pk>", PlaneUpdateView.as_view(), name="plane_update"),
+    path("plane/delete/<int:pk>", PlaneDeleteView.as_view(), name="plane_delete"),
+    path("plane/create", PlaneCreateView.as_view(), name="plane_create"),
+]
+
+"""
+
+
 urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     {% if cookiecutter.login_required | trim | lower in ['y', 'yes', 'true', '1'] or cookiecutter.login_required == True %}
