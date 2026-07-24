@@ -6,6 +6,7 @@
 а также заменить label для сортировки и фильтрации.
 """
 
+from django.forms import forms
 
 class SearchSortFilterForm(forms.Form):
     CHOICES = [
