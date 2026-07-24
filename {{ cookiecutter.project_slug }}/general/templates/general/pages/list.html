@@ -1,4 +1,15 @@
 {% extends 'general/base.html' %}
+
+{% comment %}
+
+В представление ListView добавьте:
+
+template_name = "general/pages/list.html"
+
+Представление обязательно должно наследовать от GetVerboseNameMixin.
+
+{% endcomment %}
+
 {% load static %}
 {% load model_filters %}
 
