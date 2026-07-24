@@ -180,7 +180,7 @@ PASSWORD_HASHERS = [
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = reverse_lazy("login")
 
-{% if cookiecutter.custom_user %}
+{% if cookiecutter.custom_user | trim | lower in ['y', 'yes', 'true', '1'] or cookiecutter.custom_user == True %}
 AUTH_USER_MODEL = 'accounts.User'
 {% endif %}
 
