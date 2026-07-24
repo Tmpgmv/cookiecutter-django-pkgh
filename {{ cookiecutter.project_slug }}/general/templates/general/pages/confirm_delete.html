@@ -14,11 +14,11 @@ template_name = "general/pages/confirm_delete.html"
 {% load bootstrap_icons %}
 
 {% block h %}
-    Удалить {{ view.get_verbose_name }}: {{ object }}
+    Удалить {{ view.get_verbose_name|lower }}: {{ object }}
 {% endblock %}
 
 {% block title %}
-    Удалить {{ view.get_verbose_name }}: {{ object }}
+    Удалить {{ view.get_verbose_name|lower }}: {{ object }}
 {% endblock %}
 
 {% block content %}
