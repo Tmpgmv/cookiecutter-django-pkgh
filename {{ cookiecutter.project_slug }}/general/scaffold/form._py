@@ -1,0 +1,11 @@
+from django import forms
+from django.forms import ModelForm
+
+
+class PlaneForm(ModelForm):
+    class Meta:
+        model = Plane
+        fields = "__all__"
+        widgets = { # Искать по DateInput.
+            'start': forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
+        }
