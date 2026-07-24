@@ -34,6 +34,11 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.admin",
+    # PREP {
+    "django_admin_rest_api",
+    "django_admin_react",
+    # } PREP
+    
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
