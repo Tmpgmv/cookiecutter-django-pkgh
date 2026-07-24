@@ -49,6 +49,9 @@ class GetVerboseNameMixin:
     2. urlpatterns. Обязательно называть по образцу в urls.py.
     3. Шаблон. В частности, general/pages/list.html.            
     4. Модели должны наследовать от TypicalUrlMixin.
+
+    Пользуйтесь утилитой по адресу: http://localhost:8000/aux-url/
+    
     """
 
 
