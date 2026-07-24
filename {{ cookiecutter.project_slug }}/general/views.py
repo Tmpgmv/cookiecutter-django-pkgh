@@ -12,7 +12,7 @@ class UrlPatternView(TemplateView):
         1. URL для CRUD.
         2. Представления.
         
-    См. комментарий в templates/general/embedded/search_sort_filter.html
+    См. комментарий в general/view_mixins.py/GetVerboseNameMixin
 
     """
     
