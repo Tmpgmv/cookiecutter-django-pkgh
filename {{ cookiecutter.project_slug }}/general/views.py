@@ -11,6 +11,8 @@ class UrlPatternView(TemplateView):
     Генерирует для конкретной модели: 
         1. URL для CRUD.
         2. Представления.
+        3. Регистрации модели в админке.
+        4. Представления для хомяка.
         
     См. комментарий в general/view_mixins.py/GetVerboseNameMixin
 
