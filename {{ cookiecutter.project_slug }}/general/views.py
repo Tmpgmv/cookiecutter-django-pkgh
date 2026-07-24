@@ -5,6 +5,13 @@ from general.forms import ModelInputForm
 
 
 class UrlPatternView(TemplateView):
+    """
+    Вспомогательное представление.
+    Генерирует правильные URL для CRUD конкретной модели.
+    См. комментарий в templates/general/embedded/search_sort_filter.html
+    """
+
+    
     template_name = "general/url_patterns.html"
 
     def post(self, request, *args, **kwargs):
