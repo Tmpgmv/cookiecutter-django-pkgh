@@ -48,7 +48,7 @@ class {model_name_capitalized}(TypicalUrlMixin,
 
 
     def __str__(self):
-        return f""
+        return f"{" + "{self.pk}" + "}"
 
     class Meta:
         verbose_name = ""
@@ -132,3 +132,13 @@ class HomeView(GetVerboseNameMixin,
         form = ModelInputForm()
         context['form'] = form
         return context
+
+
+------------------------Форма----------------------------------
+class {model_name_capitalized}Form(ModelForm):
+    class Meta:
+        model = {model_name_capitalized}
+        fields = "__all__"
+        widgets = { # Искать в документации по DateInput.
+            'start': forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
+        }
