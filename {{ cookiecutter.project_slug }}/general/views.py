@@ -121,10 +121,6 @@ path("{model_name_lower}/create", {model_name_capitalized}CreateView.as_view(), 
 ------------------------Форма фильтрации, сортировки и поиска ----------------------------------
 
 class SearchSortFilterForm(forms.Form):
-    """
-    STUD!
-    Форма для организации поиска, фильтрации и сортировки.
-    """
 
     search = forms.IntegerField(required=False,
                                 validators=[MinValueValidator(0),],    
@@ -171,9 +167,6 @@ from planes.models import Plane
 
 class HomeView(GetVerboseNameMixin,
                ListView):
-    """
-    Домашняя страница.
-    """
 
     model = Plane
     template_name = "general/pages/list.html"
@@ -213,10 +206,9 @@ from django import forms
 
 
 class {model_name_capitalized}Form(ModelForm):
-    """
-    STUD!
-    Форма для модели {model_name_capitalized}.
-    """
+
+
+
     class Meta:
         model = {model_name_capitalized}
         fields = "__all__"
