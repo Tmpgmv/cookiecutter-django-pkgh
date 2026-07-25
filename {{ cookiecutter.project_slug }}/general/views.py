@@ -134,9 +134,11 @@ class {model_name_capitalized}Form(ModelForm):
     class Meta:
         model = {model_name_capitalized}
         fields = "__all__"
+        {% raw %}
         widgets = {{ # Искать в документации по DateInput.
             'start': forms.DateInput(attrs={{"type": "date"}}, format="%Y-%m-%d"),
         }}
+        {% endraw %}
 """
 
             response = HttpResponse(text_content.encode('utf-8'))
