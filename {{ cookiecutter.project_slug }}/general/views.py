@@ -14,6 +14,7 @@ class UrlPatternView(TemplateView):
         3. Модель.
         4. Регистрации модели в админке.
         5. Представления для хомяка.
+        6. Форма.
         
     См. комментарий в general/view_mixins.py/GetVerboseNameMixin
 
@@ -115,13 +116,27 @@ admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
 
 
 
-------------------------URL для CRUD----------------------------------
+
+------------------------Представление для хомяка----------------------------------
 
 class HomeView(GetVerboseNameMixin,
                ListView):
 
     model = {model_name_capitalized}
     template_name = "general/pages/list.html"
+
+
+
+
+
+------------------------Форма----------------------------------
+class {model_name_capitalized}Form(ModelForm):
+    class Meta:
+        model = {model_name_capitalized}
+        fields = "__all__"
+        widgets = { # Искать в документации по DateInput.
+            'start': forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
+        }
 """
 
             response = HttpResponse(text_content.encode('utf-8'))
@@ -136,11 +151,3 @@ class HomeView(GetVerboseNameMixin,
         return context
 
 
-------------------------Форма----------------------------------
-class {model_name_capitalized}Form(ModelForm):
-    class Meta:
-        model = {model_name_capitalized}
-        fields = "__all__"
-        widgets = { # Искать в документации по DateInput.
-            'start': forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
-        }
