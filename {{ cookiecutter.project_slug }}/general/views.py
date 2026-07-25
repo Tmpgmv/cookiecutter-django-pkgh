@@ -122,17 +122,43 @@ admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
 
 from django.views.generic import ListView
 from general.view_mixins import GetVerboseNameMixin
+from planes.models import Plane
 
 
 class HomeView(GetVerboseNameMixin,
                ListView):
     """
-    STUD!
     Домашняя страница.
     """
-                   
-    model = {model_name_capitalized}
+
+    model = Plane
     template_name = "general/pages/list.html"
+
+    # Если требуется фильтрация, сортировка и поиск.
+
+    # def get_queryset(self):
+    #     queryset = super().get_queryset()
+    #     # Получаем параметры из GET-запроса
+    #     search = self.request.GET.get('search')
+    #     sort = self.request.GET.get('sort')
+    #     filter = self.request.GET.get('filter')
+    #
+    #     if search:
+    #         queryset = queryset.filter(number=search)
+    #     if filter:
+    #         queryset = queryset.filter(status=filter)
+    #     if sort:
+    #         queryset = queryset.order_by(sort)
+    #     # Если sort не передан, используем сортировку по умолчанию из модели (Meta)
+    #     return queryset
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     # Передаём GET-данные в форму, чтобы она отображала текущие значения
+    #     context['form'] = SearchSortFilterForm(self.request.GET or None)
+    #     return context
+
+
 
 
 
@@ -186,8 +212,8 @@ class SearchSortFilterForm(forms.Form):
                                 label="Номер")
 
 
-    # Как вариант - первым элементов кортежей задавать
-    # наименование поля в модели. Допустим, модель такая.
+    # Как вариант - первым элементом кортежа задавать
+    # наименование поля в модели (по которому собрались сортировать). Допустим, модель такая.
     # class Plane(TypicalUrlMixin,
     #            models.Model):
     #    start = models.DateField(verbose_name="Дата ввода в эксплуатацию")
