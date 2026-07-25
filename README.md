@@ -168,3 +168,16 @@ cat temp_modelinfo.md >> README.md
 ```bash
 rm temp_modelinfo.md
 ```
+
+## Скрипт создания базы данных
+
+```bash
+pg_dump --schema-only --dbname=grablevskiy_mv_maintenance_service_fff --username=avia --password --host=localhost > schema.sql
+```
+
+
+## Скрипт создания базы данных
+
+```bash
+pg_dump --data-only --dbname=grablevskiy_mv_maintenance_service_fff --username=avia --password --host=localhost > schema.sql
+```
