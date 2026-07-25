@@ -126,7 +126,11 @@ from general.view_mixins import GetVerboseNameMixin
 
 class HomeView(GetVerboseNameMixin,
                ListView):
-
+    """
+    STUD!
+    Домашняя страница.
+    """
+                   
     model = {model_name_capitalized}
     template_name = "general/pages/list.html"
 
@@ -141,6 +145,10 @@ from django import forms
 
 
 class {model_name_capitalized}Form(ModelForm):
+    """
+    STUD!
+    Форма для модели {model_name_capitalized}.
+    """
     class Meta:
         model = {model_name_capitalized}
         fields = "__all__"
@@ -162,4 +170,46 @@ class {model_name_capitalized}Form(ModelForm):
         context['form'] = form
         return context
 
+
+
+
+------------------------Форма фильтрации, сортировки и поиска ----------------------------------
+
+class SearchSortFilterForm(forms.Form):
+    """
+    STUD!
+    Форма для организации поиска, фильтрации и сортировки.
+    """
+
+    search = forms.IntegerField(required=False,
+                                validators=[MinValueValidator(0),],    
+                                label="Номер")
+
+
+    # Как вариант - первым элементов кортежей задавать
+    # наименование поля в модели. Допустим, модель такая.
+    # class Plane(TypicalUrlMixin,
+    #            models.Model):
+    #    start = models.DateField(verbose_name="Дата ввода в эксплуатацию")
+    # Как применять - см. комментарий к HomeView.
+
+    SORT_CHOICES = [
+        ('-start', 'Сначала новые ▲'),
+        ('start', 'Сначала старые ▼'),
+    ]
+    sort = forms.ChoiceField(
+           choices=SORT_CHOICES,
+           initial='-start', # Не должно расходиться с сортировкой по умолчанию в модели (в Meta). 
+           required=True,
+           label="Дата ввода в эксплуатацию"
+    )
+
+    # filter = forms.ModelChoiceField(queryset=Category.objects.all(),
+    #                                 empty_label="-- Все категории --", # Изменить по необходимости.
+    #                                 required=True
+    # )
+
+    filter = forms.ChoiceField(choices=choices(["Все статусы"] + STATUSES),
+                               required=False,
+                               label="Статус")
 
