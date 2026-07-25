@@ -108,6 +108,7 @@ class {model_name_capitalized}DeleteView(SuccessMessageMixin,
 from django.contrib import admin
 from general.admin import BaseAdmin
 
+
 class {model_name_capitalized}Admin(BaseAdmin):
     exclude = []
 
@@ -118,6 +119,7 @@ admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
 
 
 ------------------------Представление для хомяка----------------------------------
+
 from django.views.generic import ListView
 from general.view_mixins import GetVerboseNameMixin
 
@@ -133,6 +135,7 @@ class HomeView(GetVerboseNameMixin,
 
 
 ------------------------Форма----------------------------------
+
 from django.forms import ModelForm
 from django import forms
 
