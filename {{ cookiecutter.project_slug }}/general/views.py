@@ -25,7 +25,9 @@ class UrlPatternView(TemplateView):
         if form.is_valid():
             model_name_lower = form.cleaned_data["model_name"].lower().strip()
             model_name_capitalized = model_name_lower.capitalize()
-            text_content = f"""path("{model_name_lower}/detail/<int:pk>", {model_name_capitalized}DetailView.as_view(), name="{model_name_lower}_detail"),
+            text_content = f"""------------------------URL для CRUD----------------------------------
+            
+path("{model_name_lower}/detail/<int:pk>", {model_name_capitalized}DetailView.as_view(), name="{model_name_lower}_detail"),
 path("{model_name_lower}/update/<int:pk>", {model_name_capitalized}UpdateView.as_view(), name="{model_name_lower}_update"),
 path("{model_name_lower}/delete/<int:pk>", {model_name_capitalized}DeleteView.as_view(), name="{model_name_lower}_delete"),
 path("{model_name_lower}/create", {model_name_capitalized}CreateView.as_view(), name="{model_name_lower}_create"),
@@ -34,6 +36,7 @@ path("{model_name_lower}/create", {model_name_capitalized}CreateView.as_view(), 
 
 
 
+------------------------Представления----------------------------------
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
@@ -79,6 +82,7 @@ class {model_name_capitalized}DeleteView(SuccessMessageMixin,
 
 
 
+------------------------Регистрации модели в админке----------------------------------
 
 from django.contrib import admin
 from general.admin import BaseAdmin
@@ -91,7 +95,7 @@ admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
 
 
 
-
+------------------------URL для CRUD----------------------------------
 
 class HomeView(GetVerboseNameMixin,
                ListView):
