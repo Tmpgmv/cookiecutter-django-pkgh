@@ -53,7 +53,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("admin-react/", include("django_admin_react.urls")),
     path("admin-api/", include("django_admin_rest_api.urls")),
-    path("aux-url/", UrlPatternView.as_view(), name="aux_url"),
+    path("aux/", UrlPatternView.as_view(), name="aux_url"),
 ]
 
 urlpatterns += i18n_patterns(
