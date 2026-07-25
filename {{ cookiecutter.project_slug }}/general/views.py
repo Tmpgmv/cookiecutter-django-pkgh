@@ -130,6 +130,9 @@ class HomeView(GetVerboseNameMixin,
 
 
 ------------------------Форма----------------------------------
+from django.forms import ModelForm, forms
+
+
 class {model_name_capitalized}Form(ModelForm):
     class Meta:
         model = {model_name_capitalized}
