@@ -20,15 +20,7 @@ class UrlPatternView(TemplateView):
         if form.is_valid():
             model_name_lower = form.cleaned_data["model_name"].lower().strip()
             model_name_capitalized = model_name_lower.capitalize()
-            text_content = f"""------------------------URL для CRUD----------------------------------
-            
-path("{model_name_lower}/detail/<int:pk>", {model_name_capitalized}DetailView.as_view(), name="{model_name_lower}_detail"),
-path("{model_name_lower}/update/<int:pk>", {model_name_capitalized}UpdateView.as_view(), name="{model_name_lower}_update"),
-path("{model_name_lower}/delete/<int:pk>", {model_name_capitalized}DeleteView.as_view(), name="{model_name_lower}_delete"),
-path("{model_name_lower}/create", {model_name_capitalized}CreateView.as_view(), name="{model_name_lower}_create"),
-
-
-
+            text_content = f"""
 
 ------------------------Модель----------------------------------
 
@@ -50,7 +42,26 @@ class {model_name_capitalized}(TypicalUrlMixin,
         verbose_name = ""
         verbose_name_plural = ""
         ordering = ["pk"]        
-        
+
+
+
+
+            
+------------------------Регистрации модели в админке----------------------------------
+
+from django.contrib import admin
+from general.admin import BaseAdmin
+
+
+class {model_name_capitalized}Admin(BaseAdmin):
+    exclude = []
+
+admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
+
+
+
+
+
 ------------------------Представления----------------------------------
 
 from django.contrib.messages.views import SuccessMessageMixin
@@ -96,17 +107,56 @@ class {model_name_capitalized}DeleteView(SuccessMessageMixin,
 
 
 
+------------------------URL для CRUD----------------------------------
+            
+path("{model_name_lower}/detail/<int:pk>", {model_name_capitalized}DetailView.as_view(), name="{model_name_lower}_detail"),
+path("{model_name_lower}/update/<int:pk>", {model_name_capitalized}UpdateView.as_view(), name="{model_name_lower}_update"),
+path("{model_name_lower}/delete/<int:pk>", {model_name_capitalized}DeleteView.as_view(), name="{model_name_lower}_delete"),
+path("{model_name_lower}/create", {model_name_capitalized}CreateView.as_view(), name="{model_name_lower}_create"),
 
-------------------------Регистрации модели в админке----------------------------------
-
-from django.contrib import admin
-from general.admin import BaseAdmin
 
 
-class {model_name_capitalized}Admin(BaseAdmin):
-    exclude = []
 
-admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
+
+------------------------Форма фильтрации, сортировки и поиска ----------------------------------
+
+class SearchSortFilterForm(forms.Form):
+    """
+    STUD!
+    Форма для организации поиска, фильтрации и сортировки.
+    """
+
+    search = forms.IntegerField(required=False,
+                                validators=[MinValueValidator(0),],    
+                                label="Номер")
+
+
+    # Как вариант - первым элементом кортежа задавать
+    # наименование поля в модели (по которому собрались сортировать). Допустим, модель такая.
+    # class Plane(TypicalUrlMixin,
+    #            models.Model):
+    #    start = models.DateField(verbose_name="Дата ввода в эксплуатацию")
+    # Как применять - см. комментарий к HomeView.
+
+    SORT_CHOICES = [
+        ('-start', 'Сначала новые ▲'),
+        ('start', 'Сначала старые ▼'),
+    ]
+    sort = forms.ChoiceField(
+           choices=SORT_CHOICES,
+           initial='-start', # Не должно расходиться с сортировкой по умолчанию в модели (в Meta). 
+           required=True,
+           label="Дата ввода в эксплуатацию"
+    )
+
+    # filter = forms.ModelChoiceField(queryset=Category.objects.all(),
+    #                                 empty_label="-- Все категории --", # Изменить по необходимости.
+    #                                 required=True
+    # )
+
+    filter = forms.ChoiceField(choices=choices(["Все статусы"] + STATUSES),
+                               required=False,
+                               label="Статус")
 
 
 
@@ -156,8 +206,6 @@ class HomeView(GetVerboseNameMixin,
 
 
 
-
-
 ------------------------Форма----------------------------------
 
 from django.forms import ModelForm
@@ -193,43 +241,4 @@ class {model_name_capitalized}Form(ModelForm):
 
 
 
-------------------------Форма фильтрации, сортировки и поиска ----------------------------------
-
-class SearchSortFilterForm(forms.Form):
-    """
-    STUD!
-    Форма для организации поиска, фильтрации и сортировки.
-    """
-
-    search = forms.IntegerField(required=False,
-                                validators=[MinValueValidator(0),],    
-                                label="Номер")
-
-
-    # Как вариант - первым элементом кортежа задавать
-    # наименование поля в модели (по которому собрались сортировать). Допустим, модель такая.
-    # class Plane(TypicalUrlMixin,
-    #            models.Model):
-    #    start = models.DateField(verbose_name="Дата ввода в эксплуатацию")
-    # Как применять - см. комментарий к HomeView.
-
-    SORT_CHOICES = [
-        ('-start', 'Сначала новые ▲'),
-        ('start', 'Сначала старые ▼'),
-    ]
-    sort = forms.ChoiceField(
-           choices=SORT_CHOICES,
-           initial='-start', # Не должно расходиться с сортировкой по умолчанию в модели (в Meta). 
-           required=True,
-           label="Дата ввода в эксплуатацию"
-    )
-
-    # filter = forms.ModelChoiceField(queryset=Category.objects.all(),
-    #                                 empty_label="-- Все категории --", # Изменить по необходимости.
-    #                                 required=True
-    # )
-
-    filter = forms.ChoiceField(choices=choices(["Все статусы"] + STATUSES),
-                               required=False,
-                               label="Статус")
 
