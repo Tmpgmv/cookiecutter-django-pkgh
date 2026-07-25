@@ -154,3 +154,12 @@ BEGIN
     END LOOP;
 END $$;
 ```
+
+## Подготовка документации
+
+```bash
+
+python manage.py modelinfo -v 3 --markdown -o temp_modelinfo.md
+cat temp_modelinfo.md >> README.md
+rm temp_modelinfo.md
+```
