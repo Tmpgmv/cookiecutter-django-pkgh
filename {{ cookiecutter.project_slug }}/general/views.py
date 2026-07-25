@@ -8,14 +8,7 @@ from django.utils.decorators import method_decorator
 class UrlPatternView(TemplateView):
     """
     Вспомогательное представление.
-    Генерирует для конкретной модели: 
-        1. URL для CRUD.
-        2. Представления.
-        3. Модель.
-        4. Регистрации модели в админке.
-        5. Представления для хомяка.
-        6. Форма.
-        
+       
     См. комментарий в general/view_mixins.py/GetVerboseNameMixin
 
     """
@@ -56,6 +49,7 @@ class {model_name_capitalized}(TypicalUrlMixin,
     class Meta:
         verbose_name = ""
         verbose_name_plural = ""
+        ordering = ["pk"]        
         
 ------------------------Представления----------------------------------
 
