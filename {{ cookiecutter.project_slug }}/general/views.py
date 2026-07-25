@@ -11,8 +11,9 @@ class UrlPatternView(TemplateView):
     Генерирует для конкретной модели: 
         1. URL для CRUD.
         2. Представления.
-        3. Регистрации модели в админке.
-        4. Представления для хомяка.
+        3. Модель.
+        4. Регистрации модели в админке.
+        5. Представления для хомяка.
         
     См. комментарий в general/view_mixins.py/GetVerboseNameMixin
 
@@ -35,7 +36,24 @@ path("{model_name_lower}/create", {model_name_capitalized}CreateView.as_view(), 
 
 
 
+------------------------Модель----------------------------------
 
+from django.db import models
+from general.model_mixins import TypicalUrlMixin
+
+
+class {model_name_capitalized}(TypicalUrlMixin,
+            models.Model):
+
+
+
+    def __str__(self):
+        return f"{{self.pk}}"
+
+    class Meta:
+        verbose_name = ""
+        verbose_name_plural = ""
+        
 ------------------------Представления----------------------------------
 
 from django.contrib.messages.views import SuccessMessageMixin
