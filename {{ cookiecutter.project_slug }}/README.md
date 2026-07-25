@@ -13,7 +13,7 @@
 
 Дата: {% now 'Europe/Moscow', '%Y-%m-%d' %}
 
-{{ cookiecutter.project_description }}
+Описание проекта: {{ cookiecutter.project_description }}
 
 
 ## Создание виртуального окружения
