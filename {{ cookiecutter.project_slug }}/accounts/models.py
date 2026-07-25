@@ -1,11 +1,15 @@
 from django.db import models
 
-{% if cookiecutter.custom_user == "y" %}
-
+{% if cookiecutter.custom_user | trim | lower in ['y', 'yes', 'true', '1'] or cookiecutter.custom_user == True %}
 # PREP {
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
+    """
+    Расширенная модель пользователя системы.
+    Добавлено отчество и методы, в частности, для работы с ролями.
+    """
+    
     patronymic = models.CharField(max_length=300,
                                   verbose_name="Отчество")
 
