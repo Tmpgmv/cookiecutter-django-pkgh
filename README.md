@@ -158,8 +158,13 @@ END $$;
 ## Подготовка документации
 
 ```bash
+python manage.py modelinfo -v 3 --markdown >> temp_modelinfo.md
+```
 
-python manage.py modelinfo -v 3 --markdown -o temp_modelinfo.md
+```bash
 cat temp_modelinfo.md >> README.md
+```
+
+```bash
 rm temp_modelinfo.md
 ```
