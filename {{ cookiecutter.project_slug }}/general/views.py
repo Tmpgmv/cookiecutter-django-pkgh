@@ -118,6 +118,9 @@ admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
 
 
 ------------------------Представление для хомяка----------------------------------
+from django.views.generic import ListView
+from general.view_mixins import GetVerboseNameMixin
+
 
 class HomeView(GetVerboseNameMixin,
                ListView):
@@ -130,7 +133,8 @@ class HomeView(GetVerboseNameMixin,
 
 
 ------------------------Форма----------------------------------
-from django.forms import ModelForm, forms
+from django.forms import ModelForm
+from django import forms
 
 
 class {model_name_capitalized}Form(ModelForm):
