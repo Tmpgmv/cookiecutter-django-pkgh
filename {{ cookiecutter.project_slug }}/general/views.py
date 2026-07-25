@@ -20,7 +20,7 @@ class UrlPatternView(TemplateView):
 
     """
     
-    template_name = "general/url_patterns.html"
+    template_name = "general/aux.html"
 
     def post(self, request, *args, **kwargs):
         form = ModelInputForm(request.POST)
