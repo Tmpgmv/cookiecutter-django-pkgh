@@ -48,7 +48,9 @@ class {model_name_capitalized}(TypicalUrlMixin,
 
 
     def __str__(self):
-        return f"{" + "{self.pk}" + "}"
+        {% raw %}
+        return f"{{self.pk}}"
+        {% endraw %}
 
     class Meta:
         verbose_name = ""
