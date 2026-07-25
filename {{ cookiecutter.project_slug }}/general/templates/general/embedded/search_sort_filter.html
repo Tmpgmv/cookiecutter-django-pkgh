@@ -59,8 +59,7 @@ search-sort-filter.js.
 <div class="container my-4">
     <div class="d-flex">
         <div class="filter-form">
-            <form id="search-sort-filter">
-                {% csrf_token %}
+            <form id="search-sort-filter">                
                 {% for field in form %}
                     <div>
                         {{ field.label_tag }}
