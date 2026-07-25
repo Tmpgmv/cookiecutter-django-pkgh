@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
     # PREP {
+    "django_model_info.apps.DjangoModelInfoConfig",
     "jquery",
     "django_bootstrap_icons",
 
