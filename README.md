@@ -202,3 +202,18 @@ FROM
 WHERE 
     proname = 'set_plane_maintenance_status';
 ```
+
+## Показать функции, привязанные к триггерам
+```sql
+SELECT 
+    tgname AS trigger_name,
+    tgrelid::regclass AS table_name,
+    proname AS function_name,
+    tgtype::text AS trigger_type
+FROM 
+    pg_trigger t
+JOIN 
+    pg_proc p ON t.tgfoid = p.oid
+WHERE 
+    NOT tgisinternal;
+```    
