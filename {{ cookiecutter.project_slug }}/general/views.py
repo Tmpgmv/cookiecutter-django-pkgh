@@ -232,7 +232,7 @@ class {model_name_capitalized}Form(ModelForm):
             return response
 
     def get_context_data(self, **kwargs):
-        context = super(UrlPatternView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         form = ModelInputForm()
         context['form'] = form
         return context
