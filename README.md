@@ -217,3 +217,21 @@ JOIN
 WHERE 
     NOT tgisinternal;
 ```    
+
+## Удалить триггер
+
+DROP TRIGGER IF EXISTS trigger_name ON table_name;
+
+
+```sql
+DROP TRIGGER IF EXISTS update_plane_status_on_maintenance
+ON maintenance_procedures_maintenanceprocedure;
+```
+
+## Удалить процедуру
+
+DROP FUNCTION [IF EXISTS] function_name [ (arg_type [, ...]) ] [CASCADE | RESTRICT];
+
+```sql
+DROP FUNCTION IF EXISTS set_plane_maintenance_status;
+```
