@@ -192,17 +192,6 @@ WHERE event_object_table = 'maintenance_procedures_maintenanceprocedure';
 
 Если не нужно условие - удалите крайнюю строку.
 
-## Выбрать функцию
-```sql
-SELECT 
-    proname AS function_name,
-    prosrc AS source_code
-FROM 
-    pg_proc
-WHERE 
-    proname = 'set_plane_maintenance_status';
-```
-
 ## Показать функции, привязанные к триггерам
 ```sql
 SELECT 
@@ -242,6 +231,18 @@ WHERE
     tgrelid = 'maintenance_procedures_maintenanceprocedure'::regclass
     AND NOT tgisinternal;
 ```
+
+## Выбрать функцию
+```sql
+SELECT 
+    proname AS function_name,
+    prosrc AS source_code
+FROM 
+    pg_proc
+WHERE 
+    proname = 'set_plane_maintenance_status';
+```
+
 
 ## Удалить функцию
 
