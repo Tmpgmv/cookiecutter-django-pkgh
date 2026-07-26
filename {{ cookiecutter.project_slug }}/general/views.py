@@ -120,7 +120,7 @@ path("{model_name_lower}/detail/<int:pk>", {model_name_capitalized}DetailView.as
 path("{model_name_lower}/update/<int:pk>", {model_name_capitalized}UpdateView.as_view(), name="{model_name_lower}_update"),
 path("{model_name_lower}/delete/<int:pk>", {model_name_capitalized}DeleteView.as_view(), name="{model_name_lower}_delete"),
 path("{model_name_lower}/create", {model_name_capitalized}CreateView.as_view(), name="{model_name_lower}_create"),
-
+path("{model_name_lower}/list", {model_name_lower}ListView.as_view(), name="{model_name_lower}_list"),
 
 
 
