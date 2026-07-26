@@ -184,9 +184,10 @@ pg_dump --data-only --dbname={{ cookiecutter.student_slug }}_{{ cookiecutter.pro
 
 
 ## Посмотреть все триггеры
+```sql
 SELECT trigger_name, event_manipulation, action_statement
 FROM information_schema.triggers
 WHERE event_object_table = 'maintenance_procedures_maintenanceprocedure';
-
+```
 
 Если не нужно условие - удалите крайнюю строку.
