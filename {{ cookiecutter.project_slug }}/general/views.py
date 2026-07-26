@@ -35,7 +35,7 @@ class {model_name_capitalized}(TypicalUrlMixin,
 
     def __str__(self):
         {% raw %}
-        return f"{{self.pk}}"
+        return f"Id: {{self.pk}}"
         {% endraw %}
 
     class Meta:
