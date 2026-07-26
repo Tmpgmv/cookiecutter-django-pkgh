@@ -228,6 +228,21 @@ DROP TRIGGER IF EXISTS update_plane_status_on_maintenance
 ON maintenance_procedures_maintenanceprocedure;
 ```
 
+## Выбрать все функции для таблицы
+```sql
+SELECT 
+    t.tgname AS trigger_name,
+    p.proname AS function_name,
+    pg_get_functiondef(p.oid) AS function_definition
+FROM 
+    pg_trigger t
+JOIN 
+    pg_proc p ON t.tgfoid = p.oid
+WHERE 
+    tgrelid = 'maintenance_procedures_maintenanceprocedure'::regclass
+    AND NOT tgisinternal;
+```
+
 ## Удалить функцию
 
 DROP FUNCTION [IF EXISTS] function_name [ (arg_type [, ...]) ] [CASCADE | RESTRICT];
@@ -235,3 +250,6 @@ DROP FUNCTION [IF EXISTS] function_name [ (arg_type [, ...]) ] [CASCADE | RESTRI
 ```sql
 DROP FUNCTION IF EXISTS set_plane_maintenance_status;
 ```
+
+
+    
