@@ -181,3 +181,12 @@ pg_dump --schema-only --dbname={{ cookiecutter.student_slug }}_{{ cookiecutter.p
 ```bash
 pg_dump --data-only --dbname={{ cookiecutter.student_slug }}_{{ cookiecutter.project_slug }} --username={{ cookiecutter.db_username }} --password --host=localhost > schema.sql
 ```
+
+
+## Посмотреть все триггеры
+SELECT trigger_name, event_manipulation, action_statement
+FROM information_schema.triggers
+WHERE event_object_table = 'maintenance_procedures_maintenanceprocedure';
+
+
+Если не нужно условие - удалите крайнюю строку.
