@@ -113,6 +113,7 @@ class {model_name_capitalized}UpdateView(SuccessMessageMixin,
                       GetVerboseNameMixin,
                       UpdateView):
     model = {model_name_capitalized}
+    fields = "__all__"    
     #form_class = {model_name_capitalized}Form
     success_message = "Сохранено."
     success_url = reverse_lazy("home")
@@ -123,6 +124,7 @@ class {model_name_capitalized}CreateView(SuccessMessageMixin,
                       GetVerboseNameMixin,
                       CreateView):
     model = {model_name_capitalized}
+    fields = "__all__"
     #form_class = {model_name_capitalized}Form
     success_message = "Сохранено."
     success_url = reverse_lazy("home")
