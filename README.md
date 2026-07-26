@@ -191,3 +191,14 @@ WHERE event_object_table = 'maintenance_procedures_maintenanceprocedure';
 ```
 
 Если не нужно условие - удалите крайнюю строку.
+
+## Выбрать процедуру
+```sql
+SELECT 
+    proname AS function_name,
+    prosrc AS source_code
+FROM 
+    pg_proc
+WHERE 
+    proname = 'set_plane_maintenance_status';
+```
