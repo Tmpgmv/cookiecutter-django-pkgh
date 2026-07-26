@@ -252,5 +252,39 @@ DROP FUNCTION [IF EXISTS] function_name [ (arg_type [, ...]) ] [CASCADE | RESTRI
 DROP FUNCTION IF EXISTS set_plane_maintenance_status;
 ```
 
+## Удалить все функции и все триггеры для таблицы
 
+```sql
+DO $$
+DECLARE
+    trig_record RECORD;
+    func_name text;
+BEGIN
+    -- 1. Drop all triggers on the table
+    FOR trig_record IN
+        SELECT tgname
+        FROM pg_trigger
+        WHERE tgrelid = 'maintenance_procedures_maintenanceprocedure'::regclass
+          AND NOT tgisinternal
+    LOOP
+        EXECUTE format('DROP TRIGGER IF EXISTS %I ON maintenance_procedures_maintenanceprocedure;', trig_record.tgname);
+    END LOOP;
+
+    -- 2. Drop all functions that were used by those triggers
+    --    (We drop them with CASCADE to also remove any leftover triggers)
+    FOR func_name IN
+        SELECT DISTINCT p.proname
+        FROM pg_trigger t
+        JOIN pg_proc p ON t.tgfoid = p.oid
+        WHERE t.tgrelid = 'maintenance_procedures_maintenanceprocedure'::regclass
+          AND NOT t.tgisinternal
+    LOOP
+        -- Drop the function (argument list may be needed if overloaded;
+        -- if overloaded, you need to specify argument types. 
+        -- This simplified version assumes no overloads or uses a trick with regproc.
+        EXECUTE format('DROP FUNCTION IF EXISTS %I CASCADE;', func_name);
+    END LOOP;
+END;
+$$;
+```
     
