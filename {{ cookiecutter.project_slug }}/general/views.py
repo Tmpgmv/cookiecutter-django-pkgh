@@ -5,15 +5,15 @@ from django.views.generic import TemplateView
 from general.forms import ModelInputForm
 from django.utils.decorators import method_decorator
 
-class UrlPatternView(TemplateView):
+class GeneratorView(TemplateView):
     """
-    Вспомогательное представление.
+    Генератор кода.
        
     См. комментарий в general/view_mixins.py/GetVerboseNameMixin
 
     """
     
-    template_name = "general/aux.html"
+    template_name = "general/generator.html"
 
     def post(self, request, *args, **kwargs):
         form = ModelInputForm(request.POST)
@@ -68,8 +68,13 @@ admin.site.register({model_name_capitalized}, {model_name_capitalized}Admin)
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, UpdateView, CreateView, DeleteView
+from django.views.generic import DetailView, UpdateView, CreateView, DeleteView, ListView
 from general.view_mixins import GetVerboseNameMixin
+
+
+class {model_name_capitalized}ListView(GetVerboseNameMixin,
+                    ListView):
+    model = {model_name_capitalized}
 
 
 class {model_name_capitalized}DetailView(GetVerboseNameMixin,
