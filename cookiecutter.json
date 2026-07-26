@@ -3,7 +3,7 @@
   "surname_initials_lat": "{{ Surname Initials }}",
   "db_username": "",
   "db_password": "",
-  "db_host": "10.12.0.206",
+  "db_host": "",
   "project_name_rus": "{{ Демонстрационный экзамен }}",
   "project_name_lat": "{{ exam }}",
   "project_slug": "{{ cookiecutter.project_name_lat.lower()|replace(' ', '_')|replace('-', '_')|replace(',', '')|replace('.', '')|replace('\"', '')|replace('\\'', '')|trim() }}",
@@ -25,6 +25,7 @@
   },
   "student_slug": "{{ cookiecutter.surname_initials_lat.lower()|replace('-', '_')|replace('.', '')|replace(' ', '_')|trim() }}",
   "facility": "{{ cookiecutter.facility }}",
+  "computer_number": "",
   "_copy_without_render": [
       "**/*.html",
     "*.png",
