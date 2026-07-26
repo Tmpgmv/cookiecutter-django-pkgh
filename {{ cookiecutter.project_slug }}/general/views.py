@@ -21,7 +21,7 @@ class GeneratorView(TemplateView):
             model_name_lower = form.cleaned_data["model_name"].lower().strip()
 
              # Берем именно то, что пользователь ввел в поле ввода. Не можем просто взять model_name_lower: не получится PascalCase для наименований из нескольких слов.
-            model_name_capitalized = form.cleaned_data["model_name"].strip().capitalize()
+            model_name_capitalized = form.cleaned_data["model_name"].strip()
             text_content = f"""
 
 ------------------------Модель----------------------------------
