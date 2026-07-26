@@ -192,7 +192,7 @@ WHERE event_object_table = 'maintenance_procedures_maintenanceprocedure';
 
 Если не нужно условие - удалите крайнюю строку.
 
-## Выбрать процедуру
+## Выбрать функцию
 ```sql
 SELECT 
     proname AS function_name,
@@ -228,7 +228,7 @@ DROP TRIGGER IF EXISTS update_plane_status_on_maintenance
 ON maintenance_procedures_maintenanceprocedure;
 ```
 
-## Удалить процедуру
+## Удалить функцию
 
 DROP FUNCTION [IF EXISTS] function_name [ (arg_type [, ...]) ] [CASCADE | RESTRICT];
 
