@@ -28,16 +28,18 @@ from home.views import HomeView
 """
     См. комментарий в general/view_mixins.py.
     Чтобы все заработало, нужно URL для CRUD делать по образцу (в части path и name).
-    Здесь модель называется Plane:
+    Пример URL для условной модели Plane:
 
     urlpatterns = [
         path("plane/detail/<int:pk>", PlaneDetailView.as_view(), name="plane_detail"),
         path("plane/update/<int:pk>", PlaneUpdateView.as_view(), name="plane_update"),
         path("plane/delete/<int:pk>", PlaneDeleteView.as_view(), name="plane_delete"),
         path("plane/create", PlaneCreateView.as_view(), name="plane_create"),
+        path("plane/list", PlaneListView.as_view(), name="plane_list"),
     ]
+    
 
-    Используйте вспомогательную утилиту http://127.0.0.1:8000/aux-url
+    Используйте генератор кода http://127.0.0.1:8000/generator
 
 
 """
