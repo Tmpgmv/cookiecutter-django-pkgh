@@ -10,12 +10,14 @@ class BaseGeneratorView(TemplateView):
     form_class = ModelInputForm
     repo_task = None
     repo_task_key = None
+    model_name = None
 
-    # Абстрактные методы для переопределения
-    def get_additional_content(self, model_name):
+    # Абстрактный метод для переопределения
+    def get_additional_content(self):
         """Возвращает специфичный для каждого типа генератора контент."""
         raise NotImplementedError
 
+    # Абстрактный метод для переопределения
     def get_template_suffix(self):
         """Возвращает суффикс для имени шаблона."""
         raise NotImplementedError
@@ -30,8 +32,8 @@ class BaseGeneratorView(TemplateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            model_data = self._process_model_name(form)
-            content = self._generate_full_content(model_data)
+            self.model_name = self._process_model_name(form)
+            content = self._generate_full_content()
             return self._create_response(content)
         return super().get(request, *args, **kwargs)
 
@@ -44,8 +46,33 @@ class BaseGeneratorView(TemplateView):
             'original': model_name_tmp,
         }
 
-    def _get_model_definition(self, model_name):
-        """Генерирует определение модели (общее для всех типов)."""
+    def _get_model_registration(self):
+        """Генерирует код для регистрации модели в административной панели
+        (немного различается для классического веб- и REST-приложений)."""
+        import_string = "from general.admin import BaseAdmin" if "html" in self.request.path else "from django.contrib import admin"
+        parent_class = "BaseAdmin"  if "html" in self.request.path else "admin.ModelAdmin"
+
+        return f"""
+------------------------Регистрации модели в админке----------------------------------
+
+from django.contrib import admin
+{import_string}
+
+
+class {self.model_name["capitalized"]}Admin({parent_class}):
+    exclude = []
+
+admin.site.register({self.model_name["capitalized"]}, {self.model_name["capitalized"]}Admin)
+
+
+
+
+        
+        """
+
+    def _get_model_definition(self):
+        """Генерирует определение модели (немного различается для
+        классического веб- и REST-приложений)."""
 
         html_generator = "html" in self.request.path
 
@@ -61,7 +88,7 @@ from django.db import models
         result += f"""
         
         
-class {model_name['capitalized']}("""
+class {self.model_name['capitalized']}("""
 
         if html_generator:
             result += "TypicalUrlMixin, "
@@ -70,9 +97,9 @@ class {model_name['capitalized']}("""
 
 
     def __str__(self):
-        {% raw %}
+        
         return f"Id: { self.pk }"
-        {% endraw %}
+        
 
 
     class Meta:
@@ -90,7 +117,7 @@ class {model_name['capitalized']}("""
         # ]"""
         else:
             result += """
-        #db_table = "requests" """
+        #db_table = "reauests" """
         result += """
         
         
@@ -101,11 +128,12 @@ class {model_name['capitalized']}("""
 
         return result
 
-    def _generate_full_content(self, model_name):
+    def _generate_full_content(self):
         """Генерирует полный контент, комбинируя общую и специфичную части."""
-        model_def = self._get_model_definition(model_name)
-        additional = self.get_additional_content(model_name)
-        return model_def + additional
+        model_def = self._get_model_definition()
+        admin_reg = self._get_model_registration()
+        additional = self.get_additional_content()
+        return model_def + admin_reg + additional
 
     def _create_response(self, content):
         """Создает HTTP ответ с контентом."""
@@ -124,27 +152,11 @@ class HtmlGeneratorView(BaseGeneratorView):
     repo_task = "grablevskiy_mv_computer5_task1"
     repo_task_key = "repo_task_1"
 
-    def get_additional_content(self, model_name):
+    def get_additional_content(self):
         """Возвращает специфичный для HTML-генератора контент."""
-        model_lower = model_name['lower']
-        model_cap = model_name['capitalized']
+
 
         return f"""
-------------------------Регистрации модели в админке----------------------------------
-
-from django.contrib import admin
-from general.admin import BaseAdmin
-
-
-class {model_cap}Admin(BaseAdmin):
-    exclude = []
-
-admin.site.register({model_cap}, {model_cap}Admin)
-
-
-
-
-
 ------------------------Представления----------------------------------
 
 from django.contrib.messages.views import SuccessMessageMixin
@@ -153,9 +165,9 @@ from django.views.generic import DetailView, UpdateView, CreateView, DeleteView,
 from general.view_mixins import GetVerboseNameMixin
 
 
-class {model_cap}ListView(GetVerboseNameMixin,
+class {self.model_name["capitalized"]}ListView(GetVerboseNameMixin,
                     ListView):
-    model = {model_cap}
+    model = {self.model_name["capitalized"]}
 
     # Если требуется фильтрация, сортировка и поиск.
 
@@ -183,38 +195,38 @@ class {model_cap}ListView(GetVerboseNameMixin,
 
 
 
-class {model_cap}DetailView(GetVerboseNameMixin,
+class {self.model_name["capitalized"]}DetailView(GetVerboseNameMixin,
                       DetailView):
-    model = {model_cap}
+    model = {self.model_name["capitalized"]}
     template_name = "general/pages/detail.html"
 
 
-class {model_cap}UpdateView(SuccessMessageMixin,
+class {self.model_name["capitalized"]}UpdateView(SuccessMessageMixin,
                       GetVerboseNameMixin,
                       UpdateView):
-    model = {model_cap}
+    model = {self.model_name["capitalized"]}
     fields = "__all__"    
-    #form_class = {model_cap}Form
+    #form_class = {self.model_name["capitalized"]}Form
     success_message = "Сохранено."
     success_url = reverse_lazy("home")
     template_name = "general/pages/form.html"
 
 
-class {model_cap}CreateView(SuccessMessageMixin,
+class {self.model_name["capitalized"]}CreateView(SuccessMessageMixin,
                       GetVerboseNameMixin,
                       CreateView):
-    model = {model_cap}
+    model = {self.model_name["capitalized"]}
     fields = "__all__"
-    #form_class = {model_cap}Form
+    #form_class = {self.model_name["capitalized"]}Form
     success_message = "Сохранено."
     success_url = reverse_lazy("home")
     template_name = "general/pages/form.html"
 
 
-class {model_cap}DeleteView(SuccessMessageMixin,
+class {self.model_name["capitalized"]}DeleteView(SuccessMessageMixin,
                       GetVerboseNameMixin,
                       DeleteView):
-    model = {model_cap}
+    model = {self.model_name["capitalized"]}
     success_message = "Удалено."
     success_url = reverse_lazy("home")
     template_name = "general/pages/confirm_delete.html"
@@ -224,11 +236,11 @@ class {model_cap}DeleteView(SuccessMessageMixin,
 
 ------------------------URL для CRUD----------------------------------
 
-path("{model_lower}/detail/<int:pk>", {model_cap}DetailView.as_view(), name="{model_lower}_detail"),
-path("{model_lower}/update/<int:pk>", {model_cap}UpdateView.as_view(), name="{model_lower}_update"),
-path("{model_lower}/delete/<int:pk>", {model_cap}DeleteView.as_view(), name="{model_lower}_delete"),
-path("{model_lower}/create", {model_cap}CreateView.as_view(), name="{model_lower}_create"),
-path("{model_lower}/list", {model_cap}ListView.as_view(), name="{model_lower}_list"),
+path("{self.model_name["lower"]}/detail/<int:pk>", {self.model_name["capitalized"]}DetailView.as_view(), name="{self.model_name["lower"]}_detail"),
+path("{self.model_name["lower"]}/update/<int:pk>", {self.model_name["capitalized"]}UpdateView.as_view(), name="{self.model_name["lower"]}_update"),
+path("{self.model_name["lower"]}/delete/<int:pk>", {self.model_name["capitalized"]}DeleteView.as_view(), name="{self.model_name["lower"]}_delete"),
+path("{self.model_name["lower"]}/create", {self.model_name["capitalized"]}CreateView.as_view(), name="{self.model_name["lower"]}_create"),
+path("{self.model_name["lower"]}/list", {self.model_name["capitalized"]}ListView.as_view(), name="{self.model_name["lower"]}_list"),
 
 
 
@@ -286,7 +298,7 @@ class HomeView(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
 
-        return reverse_lazy("{model_lower}_list")
+        return reverse_lazy("{self.model_name["lower"]}_list")
 
 
 
@@ -298,12 +310,12 @@ from django.forms import ModelForm
 from django import forms
 
 
-class {model_cap}Form(ModelForm):
+class {self.model_name["capitalized"]}Form(ModelForm):
 
 
 
     class Meta:
-        model = {model_cap}
+        model = {self.model_name["capitalized"]}
         fields = "__all__"
 
         {% raw %}
@@ -324,7 +336,7 @@ class JsonGeneratorView(BaseGeneratorView):
     repo_task = "grablevskiy_mv_computer5_task2"
     repo_task_key = "repo_task_2"
 
-    def get_additional_content(self, model_name):
+    def get_additional_content(self):
         """
         Возвращает специфичный для REST-генератора контент.
         В данном случае - пока ничего дополнительного, только модель.
