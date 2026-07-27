@@ -246,8 +246,7 @@ class {model_name_capitalized}Form(ModelForm):
         context = super().get_context_data(**kwargs)
         form = ModelInputForm()
         context['form'] = form
-        context['repo_task_1'] = "{{ cookiecutter.student_slug }}_computer{{ cookiecutter.computer_number }}_task1"
-        context['repo_task_2'] = "{{ cookiecutter.student_slug }}_computer{{ cookiecutter.computer_number }}_task2"
+        context['repo_task_1'] = "{{ cookiecutter.student_slug }}_computer{{ cookiecutter.computer_number }}_task1"        
         return context
 
 
@@ -259,4 +258,11 @@ class JsonGeneratorView(TemplateView):
     """
     
     template_name = "generators/json_generator.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        form = ModelInputForm()
+        context['form'] = form
+        context['repo_task_2'] = "{{ cookiecutter.student_slug }}_computer{{ cookiecutter.computer_number }}_task2"        
+        return context    
 
