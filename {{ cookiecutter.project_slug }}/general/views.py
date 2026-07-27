@@ -354,12 +354,35 @@ class {self.model_name["capitalized"]}Serializer(serializers.ModelSerializer):
 
         """
 
+    def _get_view_set(self):
+        """
+        Возвращает набор представлений.
+        """
+    
+        return f"""        
+------------------------Набор представлений----------------------------------
+        
+from rest_framework import viewsets, permissions
+
+
+class {self.model_name["capitalized"]}ViewSet(viewsets.ModelViewSet):
+    queryset = {self.model_name["capitalized"]}.objects.all()
+    serializer_class = {self.model_name["capitalized"]}Serializer
+    permission_classes = [permissions.AllowAny]
+      
+
+
+
+
+
+        """
+
+
     def get_additional_content(self):
         """
-        Возвращает специфичный для REST-генератора контент.
-        В данном случае - пока ничего дополнительного, только модель.
+        Возвращает специфичный для REST-генератора контент.        
         """
 
         result = self._get_serializer()
-
+        result += self._get_view_set()
         return result
