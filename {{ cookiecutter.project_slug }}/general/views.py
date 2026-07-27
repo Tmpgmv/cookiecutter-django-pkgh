@@ -90,7 +90,7 @@ class {model_name['capitalized']}("""
         # ]"""
         else:
             result += """
-        #db_table = "reauests" """
+        #db_table = "requests" """
         result += """
         
         
