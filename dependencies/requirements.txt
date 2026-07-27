@@ -1,5 +1,5 @@
 # PREP {
-cookiecutter
+cookiecutter==2.7.1
 Django==5.2
 django-plaintext-password==0.3.0 # https://pypi.org/project/django-plaintext-password/
 pillow==12.0.0
