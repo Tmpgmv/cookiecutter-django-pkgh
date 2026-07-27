@@ -13,7 +13,7 @@ class HtmlGeneratorView(TemplateView):
 
     """
     
-    template_name = "general/html_generator.html"
+    template_name = "generators/html_generator.html"
 
     def post(self, request, *args, **kwargs):
         form = ModelInputForm(request.POST)
@@ -258,5 +258,5 @@ class JsonGeneratorView(TemplateView):
     Генератор кода для REST-приложения.       
     """
     
-    template_name = "general/json_generator.html"
+    template_name = "generators/json_generator.html"
 
