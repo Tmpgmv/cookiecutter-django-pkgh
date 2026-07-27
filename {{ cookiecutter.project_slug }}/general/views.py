@@ -280,10 +280,11 @@ class {model_cap}Form(ModelForm):
     class Meta:
         model = {model_cap}
         fields = "__all__"
-
+        {% raw %}
         widgets = {{ # Искать в документации по DateInput.
             'start': forms.DateInput(attrs={{"type": "date"}}, format="%Y-%m-%d"),
         }}
+        {% endraw %}
 
 """
 
