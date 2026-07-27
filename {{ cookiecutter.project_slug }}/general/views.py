@@ -51,7 +51,7 @@ class {model_name_capitalized}(TypicalUrlMixin,
         #         name="time_spent_gt_0",
         #     )
         # ]
-
+        #db_table = "reauests"
 
 
             
