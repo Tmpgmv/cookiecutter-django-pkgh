@@ -5,9 +5,9 @@ from django.views.generic import TemplateView
 from general.forms import ModelInputForm
 from django.utils.decorators import method_decorator
 
-class GeneratorView(TemplateView):
+class HtmlGeneratorView(TemplateView):
     """
-    Генератор кода.
+    Генератор кода для классического веб-приложения.
        
     См. комментарий в general/view_mixins.py/GetVerboseNameMixin
 
