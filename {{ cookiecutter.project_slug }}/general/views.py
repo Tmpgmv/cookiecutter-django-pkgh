@@ -45,7 +45,12 @@ class {model_name_capitalized}(TypicalUrlMixin,
         verbose_name = ""
         verbose_name_plural = ""
         ordering = ["pk"]        
-
+        # constraints = [
+        #     models.CheckConstraint(
+        #         condition=Q(time_spent__gt=0),
+        #         name="time_spent_gt_0",
+        #     )
+        # ]
 
 
 
