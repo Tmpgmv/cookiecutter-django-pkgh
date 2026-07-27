@@ -22,7 +22,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import path, include
 from django.conf import settings  # PREP
 from django.conf.urls.static import static  # PREP
-from general.views import GeneratorView
+from general.views import HtmlGeneratorView
 from home.views import HomeView
 
 """
@@ -55,7 +55,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("admin-react/", include("django_admin_react.urls")),
     path("admin-api/", include("django_admin_rest_api.urls")),
-    path("generator/", GeneratorView.as_view(), name="generator"),
+    path("html/", HtmlGeneratorView.as_view(), name="html"),
 ]
 
 urlpatterns += i18n_patterns(
