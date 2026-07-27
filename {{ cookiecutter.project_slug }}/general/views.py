@@ -59,8 +59,9 @@ class {model_name['capitalized']}(TypicalUrlMixin,
 
 
     def __str__(self):
-
+        {% raw %}
         return f"Id: {{self.pk}}"
+        {% endraw %}
 
 
     class Meta:
