@@ -46,28 +46,43 @@ class BaseGeneratorView(TemplateView):
 
     def _get_model_definition(self, model_name):
         """Генерирует определение модели (общее для всех типов)."""
-        return f"""
+
+        html_generator = "html" in self.request.path
+
+        result = f"""
 ------------------------Модель----------------------------------
 
 from django.db import models
-from general.model_mixins import TypicalUrlMixin
+"""
+        if html_generator:
+            result += """from general.model_mixins import TypicalUrlMixin
+"""
 
+        result += f"""
+        
+        
+class {model_name['capitalized']}("""
 
-class {model_name['capitalized']}(TypicalUrlMixin,
-            models.Model):
+        if html_generator:
+            result += "TypicalUrlMixin,"
+        result += """
+        models.Model):
 
 
 
     def __str__(self):
-        {% raw %}
+
         return f"Id: {{self.pk}}"
-        {% endraw %}
+
 
 
     class Meta:
         verbose_name = ""
         verbose_name_plural = ""
-        ordering = ["pk"]        
+        ordering = ["pk"]
+"""
+        if html_generator:
+            result += """            
         # constraints = [
         #     models.CheckConstraint(
         #         condition=Q(time_spent__gt=0),
@@ -75,7 +90,15 @@ class {model_name['capitalized']}(TypicalUrlMixin,
         #     )
         # ]
         #db_table = "reauests"
-"""
+        
+        
+        
+        
+        
+        """
+        
+
+        return result
 
     def _generate_full_content(self, model_name):
         """Генерирует полный контент, комбинируя общую и специфичную части."""
@@ -281,11 +304,11 @@ class {model_cap}Form(ModelForm):
     class Meta:
         model = {model_cap}
         fields = "__all__"
-        {% raw %}
+        
         widgets = {{ # Искать в документации по DateInput.
             'start': forms.DateInput(attrs={{"type": "date"}}, format="%Y-%m-%d"),
         }}
-        {% endraw %}
+        
 
 """
 
