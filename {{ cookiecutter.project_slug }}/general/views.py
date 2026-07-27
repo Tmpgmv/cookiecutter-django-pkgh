@@ -64,7 +64,7 @@ from django.db import models
 class {model_name['capitalized']}("""
 
         if html_generator:
-            result += "TypicalUrlMixin,"
+            result += "TypicalUrlMixin, "
         result += """models.Model):
 
 
