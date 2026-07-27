@@ -72,7 +72,7 @@ class {model_name['capitalized']}("""
 
     def __str__(self):
         {% raw %}
-        return f"Id: {{self.pk}}"
+        return f"Id: {{ self.pk }}"
         {% endraw %}
 
 
