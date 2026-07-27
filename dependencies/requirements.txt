@@ -14,4 +14,12 @@ pywebview==6.2.1 # https://pywebview.flowrl.com/
 django-admin-react==1.13.1 # https://pypi.org/project/django-admin-react/
 django-admin-rest-api==1.8.1 # https://pypi.org/project/django-admin-rest-api/
 django-model-info==2026.3.1 # https://django-model-info.readthedocs.io/en/latest/
+
+
+# DRF { https://www.django-rest-framework.org/ 
+djangorestframework==3.17.1
+Markdown==3.10.2
+django-filter==25.2
+# } DRF
+
 # } PREP
