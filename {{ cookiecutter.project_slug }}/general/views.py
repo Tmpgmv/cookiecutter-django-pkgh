@@ -87,9 +87,11 @@ class {model_name['capitalized']}("""
         #         condition=Q(time_spent__gt=0),
         #         name="time_spent_gt_0",
         #     )
-        # ]
-        #db_table = "reauests"
-        
+        # ]"""
+        else:
+            result += """
+            #db_table = "reauests" """
+        result += """
         
         
         
