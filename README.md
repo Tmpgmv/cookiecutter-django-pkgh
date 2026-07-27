@@ -179,7 +179,7 @@ pg_dump --schema-only --dbname={{ cookiecutter.student_slug }}_{{ cookiecutter.p
 ## Cкрипт загрузки тестовых данных
 
 ```bash
-pg_dump --data-only --dbname={{ cookiecutter.student_slug }}_{{ cookiecutter.project_slug }} --username={{ cookiecutter.db_username }} --password --host=localhost > schema.sql
+pg_dump --data-only --dbname={{ cookiecutter.student_slug }}_{{ cookiecutter.project_slug }} --username={{ cookiecutter.db_username }} --password --host=localhost > data.sql
 ```
 
 
