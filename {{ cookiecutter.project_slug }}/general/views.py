@@ -149,7 +149,7 @@ class HtmlGeneratorView(BaseGeneratorView):
     См. комментарий в general/view_mixins.py/GetVerboseNameMixin
     """
     template_name = "generators/html_generator.html"
-    repo_task = "grablevskiy_mv_computer5_task1"
+    repo_task = "{{ cookiecutter.student_slug }}_{{ cookiecutter.computer_number }}_task1"
     repo_task_key = "repo_task_1"
 
     def get_additional_content(self):
@@ -333,7 +333,7 @@ class JsonGeneratorView(BaseGeneratorView):
     Генератор кода для REST-приложения.
     """
     template_name = "generators/json_generator.html"
-    repo_task = "grablevskiy_mv_computer5_task2"
+    repo_task = "{{ cookiecutter.student_slug }}_{{ cookiecutter.computer_number }}_task2"
     repo_task_key = "repo_task_2"
 
     def _get_serializer(self):
