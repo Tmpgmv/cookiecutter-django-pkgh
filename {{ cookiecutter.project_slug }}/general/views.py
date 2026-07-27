@@ -49,7 +49,7 @@ class BaseGeneratorView(TemplateView):
     def _get_model_registration(self):
         """Генерирует код для регистрации модели в административной панели
         (немного различается для классического веб- и REST-приложений)."""
-        import_string = "from general.admin import BaseAdmin" if "html" in self.request.path else "from django.contrib import admin"
+        import_string = "from general.admin import BaseAdmin" if "html" in self.request.path else ""
         parent_class = "BaseAdmin"  if "html" in self.request.path else "admin.ModelAdmin"
 
         return f"""
