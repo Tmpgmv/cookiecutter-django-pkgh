@@ -336,9 +336,30 @@ class JsonGeneratorView(BaseGeneratorView):
     repo_task = "grablevskiy_mv_computer5_task2"
     repo_task_key = "repo_task_2"
 
+    def _get_serializer(self):
+        return f"""        
+------------------------Сериализатор----------------------------------
+        
+from rest_framework import serializers
+
+
+class {self.model_name["capitalized"]}Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = {self.model_name["capitalized"]}
+        fields = "__all__"        
+
+
+
+
+
+        """
+
     def get_additional_content(self):
         """
         Возвращает специфичный для REST-генератора контент.
         В данном случае - пока ничего дополнительного, только модель.
         """
-        return ""
+
+        result = self._get_serializer()
+
+        return result
