@@ -71,9 +71,9 @@ class {model_name['capitalized']}("""
 
 
     def __str__(self):
-
+        {% raw %}
         return f"Id: {{self.pk}}"
-
+        {% endraw %}
 
 
     class Meta:
@@ -304,10 +304,12 @@ class {model_cap}Form(ModelForm):
     class Meta:
         model = {model_cap}
         fields = "__all__"
-        
+
+        {% raw %}
         widgets = {{ # Искать в документации по DateInput.
             'start': forms.DateInput(attrs={{"type": "date"}}, format="%Y-%m-%d"),
         }}
+        {% endraw %}
         
 
 """
