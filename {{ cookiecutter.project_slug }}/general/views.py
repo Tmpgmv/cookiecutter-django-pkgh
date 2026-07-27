@@ -65,8 +65,7 @@ class {model_name['capitalized']}("""
 
         if html_generator:
             result += "TypicalUrlMixin,"
-        result += """
-        models.Model):
+        result += """models.Model):
 
 
 
