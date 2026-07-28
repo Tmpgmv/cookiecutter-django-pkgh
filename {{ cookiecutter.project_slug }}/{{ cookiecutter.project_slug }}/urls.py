@@ -24,6 +24,7 @@ from django.conf import settings  # PREP
 from django.conf.urls.static import static  # PREP
 from general.views import HtmlGeneratorView, JsonGeneratorView
 from home.views import HomeView
+from rest_framework import routers
 
 """
     См. комментарий в general/view_mixins.py.
@@ -54,7 +55,7 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     {% endif %}    
     path("admin/", admin.site.urls),
-    path("api-auth/", include("rest_framework.urls"))
+    path("api-auth/", include("rest_framework.urls")),
     path("admin-react/", include("django_admin_react.urls")),
     path("admin-api/", include("django_admin_rest_api.urls")),
     path("html/", HtmlGeneratorView.as_view(), name="html"),
