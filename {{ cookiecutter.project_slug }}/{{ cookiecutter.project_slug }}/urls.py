@@ -43,11 +43,12 @@ from home.views import HomeView
 
 
 """
+router = routers.DefaultRouter()
 
-
-urlpatterns = [
+urlpatterns = [    
     path("accounts/", include("django.contrib.auth.urls")),
     {% if cookiecutter.login_required | trim | lower in ['y', 'yes', 'true', '1'] or cookiecutter.login_required == True %}
+    #path("", include(router.urls)),
     path("", login_required(HomeView.as_view()), name="home"),
     {% else %}
     path("", HomeView.as_view(), name="home"),
