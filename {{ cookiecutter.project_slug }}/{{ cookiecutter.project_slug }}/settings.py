@@ -189,4 +189,10 @@ AUTH_USER_MODEL = 'accounts.User'
 
 BS_ICONS_BASE_PATH = os.path.join(BASE_DIR, "general/static/general/img/bootstrap-icons")
 
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
+    ]
+}
+
 # } PREP
