@@ -53,6 +53,7 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     {% endif %}    
     path("admin/", admin.site.urls),
+    path("api-auth/", include("rest_framework.urls"))
     path("admin-react/", include("django_admin_react.urls")),
     path("admin-api/", include("django_admin_rest_api.urls")),
     path("html/", HtmlGeneratorView.as_view(), name="html"),
