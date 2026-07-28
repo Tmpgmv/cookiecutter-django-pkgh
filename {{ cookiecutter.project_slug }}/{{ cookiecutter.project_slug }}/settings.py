@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # PREP {
     "django_admin_rest_api",
     "django_admin_react",
+    "rest_framework",
     # } PREP
     
     "django.contrib.auth",
