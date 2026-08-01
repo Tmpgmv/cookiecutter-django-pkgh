@@ -14,9 +14,9 @@ PREP
 {% load bootstrap_icons %}
 
 {% if message %}
-    <div class="message-box message-{{ type }} py-3 px-4 container mb-3">
-        <div class="d-flex align-items-center">
-            <span>
+    <div id="message-container" class="message-box message-{{ type }} py-3 px-4 container mb-3">
+        <div id="message-d-flex" class="d-flex align-items-center">
+            <span id="message-icon-span">
                 {% if type == "error" %}
                     {% bs_icon 'exclamation-octagon-fill' size='1.5em' color='#842029' %}
                 {% else %}
@@ -25,7 +25,7 @@ PREP
             </span>
 
             {# Applying the type class here ensures text color is also handled #}
-            <span class="ms-3 text-content-{{ type }}">
+            <span id="message" class="ms-3 text-content-{{ type }}">
                 {{ message }}
             </span>
         </div>
