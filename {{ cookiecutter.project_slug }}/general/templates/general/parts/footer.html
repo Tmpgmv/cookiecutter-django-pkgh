@@ -1,14 +1,14 @@
 {% load static %}
 
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
-    <div class="container footer pt-5 aux-background-color">
-        <div class="row">
+    <div id="footer-container" class="container footer pt-5 aux-background-color">
+        <div id="booter-row" class="row">
             <div class="col-12 col-md-6">
-                <img class="mb-2" src="{% static 'general/img/icon.png' %}" alt="Logo" width="24">
-                <p class="d-block mb-3 text-body-secondary">© {% now "Y" %} {{ PROJECT_NAME }}</p></div>
-            <div class="col-12 col-md-6">
-                <h5>{{ PROJECT_NAME }}</h5>
-                <p>{{ PROJECT_DESCRIPTION }}</p>
+                <img id="footer-logo" class="mb-2" src="{% static 'general/img/icon.png' %}" alt="Logo" width="24">
+                <p id="copyright" class="d-block mb-3 text-body-secondary">© {% now "Y" %} {{ PROJECT_NAME }}</p></div>
+            <div id="project-description-in-footer" class="col-12 col-md-6">
+                <h5 id="project-name-footer">{{ PROJECT_NAME }}</h5>
+                <p id="project-description-footer">{{ PROJECT_DESCRIPTION }}</p>
             </div>
         </div>
     </div>
