@@ -124,7 +124,7 @@ template_name = "general/pages/list.html"
               <span id="page-link-{{ i }}" class="page-link">{{ i }}</span>
             </li>
           {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            <li id="li-page-num-{{ i }}" class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
           {% endif %}
         {% endif %}
       {% endfor %}
@@ -140,13 +140,13 @@ template_name = "general/pages/list.html"
 
     {# Next page #}
     {% if page_obj.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+      <li id="next-page-li" class="page-item">
+        <a id="next-page" class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
           {% bs_icon 'caret-right-fill' %}
         </a>
       </li>
     {% else %}
-      <li class="page-item disabled">
+      <li id="next-page-disabled-li" class="page-item disabled">
         <span class="page-link" aria-label="Next">
           {% bs_icon 'caret-right-fill' %}
         </span>
@@ -155,13 +155,13 @@ template_name = "general/pages/list.html"
 
     {# Last page #}
     {% if page_obj.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
+      <li id="last-page-li"class="page-item">
+        <a id="last-page-link" class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
           {% bs_icon 'skip-forward-fill' %}
         </a>
       </li>
     {% else %}
-      <li class="page-item disabled">
+      <li id="not-last-page-disabled" class="page-item disabled">
         <span class="page-link" aria-label="Last">
           {% bs_icon 'skip-forward-fill' %}
         </span>
