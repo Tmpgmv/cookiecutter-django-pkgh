@@ -42,26 +42,26 @@ template_name = "general/pages/form.html"
     <table>
     {{form.as_table}}
     </table>
-    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#confirmModal">
+    <button id="confirm-button" type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#confirmModal">
         Сохранить
     </button>
 </form>
 
 
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmModalLabel">Подтверждение сохранения</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <div id="modal-dialog-div" class="modal-dialog">
+        <div id="modal-content-div" class="modal-content">
+            <div id="modal-header" class="modal-header">
+                <h5 id="modal-title" class="modal-title" id="confirmModalLabel">Подтверждение сохранения</h5>
+                <button id="close-button" type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body text-center">
-                <img src="{% static 'general/img/confirmation.svg' %}" alt="Confirm" class="img-fluid mb-3" style="max-width: 80px;">
+                <img id="confirm-img" src="{% static 'general/img/confirmation.svg' %}" alt="Confirm" class="img-fluid mb-3" style="max-width: 80px;">
                 <p>Сохранить</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
-                <button type="button" class="btn btn-danger" id="confirm-btn">Да</button>
+            <div id="modal-footer" class="modal-footer">
+                <button id="cancel-button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+                <button id="confirm-button" type="button" class="btn btn-danger" id="confirm-btn">Да</button>
             </div>
         </div>
     </div>
