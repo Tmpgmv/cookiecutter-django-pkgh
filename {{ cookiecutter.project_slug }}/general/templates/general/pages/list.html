@@ -31,25 +31,25 @@ template_name = "general/pages/list.html"
 <div class="container mb-3">
     {% if user.is_admin %}
         {% with route=view.get_model_name|add:"_create" %}
-            <a href="{% url route %}" class="btn attention mt-2 mb-2">{% bs_icon 'plus-lg' %}</a>
+            <a id="create-button" href="{% url route %}" class="btn attention mt-2 mb-2">{% bs_icon 'plus-lg' %}</a>
         {% endwith %}
     {% endif %}
 </div>
 
 {% for object in object_list %}
 
-<div style="grid-template-columns: 1fr;"
+<div id="inner-div-{{ forloop.counter }}" style="grid-template-columns: 1fr;"
      class="d-grid mb-3 mt-3 {% if not user.is_admin %}pb-1{% endif %} position-relative attention-border">
 
-    <div class="p-2 ms-3 mt-3 me-3 mb-3 attention-border position-relative">
+    <div id="" class="p-2 ms-3 mt-3 me-3 mb-3 attention-border position-relative">
         {% for field in object|get_fields %}
-        <div class="col-12">
+        <div id="object-object{{ forloop.parentloop.counter }}-{{ forloop.counter }}" class="col-12">
 
             <p>
-                <strong>{{ field.label }}: </strong>
+                <strong id="field-label-{{ forloop.parentloop.counter }}-{{ forloop.counter }}">{{ field.label }}: </strong>
 
                 {% if field.is_image and field.value %}
-                    <img src="{{ field.value.url }}" alt="{{ field.label }}">
+                    <img id="img-object{{ forloop.parentloop.counter }}-{{ forloop.counter }}" src="{{ field.value.url }}" alt="{{ field.label }}">
                 {% else %}
                     {{ field.value|default:"—" }}
                 {% endif %}
@@ -67,25 +67,25 @@ template_name = "general/pages/list.html"
 </div>
 
 {% empty %}
-<div class="container mb-3">
-<p>Нет данных.</p>
+<div id="no-data-container" class="container mb-3">
+<p id="no-data-text">Нет данных.</p>
 </div>
 {% endfor %}
 
 
 {% if page_obj %}
-<nav aria-label="Page navigation">
-  <ul class="pagination justify-content-center">
+<nav id="pagination-nav" aria-label="Page navigation">
+  <ul id="pagination-ul" class="pagination justify-content-center">
     {# First page #}
     {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page=1" aria-label="First">
+      <li id="first-page-li" class="page-item-li">
+        <a id="first-page-1" class="page-link" href="?page=1" aria-label="First">
           {% bs_icon 'skip-backward-fill' %}
         </a>
       </li>
     {% else %}
-      <li class="page-item disabled">
-        <span class="page-link" aria-label="First">
+      <li id="first-page-item-disabled" class="page-item disabled">
+        <span id="first-page-link-1" class="page-link" aria-label="First">
           {% bs_icon 'skip-backward-fill' %}
         </span>
       </li>
@@ -93,14 +93,14 @@ template_name = "general/pages/list.html"
 
     {# Previous page #}
     {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+      <li id="page-item-has-previous" class="page-item">
+        <a id="previous-page-{{ page_obj.previous_page_number }}" class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
           {% bs_icon 'caret-left-fill' %}
         </a>
       </li>
     {% else %}
-      <li class="page-item disabled">
-        <span class="page-link" aria-label="Previous">
+      <li id="previous-page-item-disabled" class="page-item disabled">
+        <span id="previous-page-link" class="page-link" aria-label="Previous">
           {% bs_icon 'caret-left-fill' %}
         </span>
       </li>
@@ -110,9 +110,9 @@ template_name = "general/pages/list.html"
     {% with page_num=page_obj.number total=page_obj.paginator.num_pages %}
       {# Show first page if not near the beginning #}
       {% if page_num > 3 %}
-        <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+        <li id="page-number-range-page-1" class="page-item"><a class="page-link" href="?page=1">1</a></li>
         {% if page_num > 4 %}
-          <li class="page-item disabled"><span class="page-link">…</span></li>
+          <li id="page-number-range-page-disabled" class="page-item disabled"><span class="page-link">…</span></li>
         {% endif %}
       {% endif %}
 
@@ -120,8 +120,8 @@ template_name = "general/pages/list.html"
       {% for i in page_obj.paginator.page_range %}
         {% if i >= page_num|add:"-2" and i <= page_num|add:"2" %}
           {% if i == page_num %}
-            <li class="page-item active" aria-current="page">
-              <span class="page-link">{{ i }}</span>
+            <li id="li-page-num-{{ i }}" class="page-item active" aria-current="page">
+              <span id="page-link-{{ i }}" class="page-link">{{ i }}</span>
             </li>
           {% else %}
             <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
