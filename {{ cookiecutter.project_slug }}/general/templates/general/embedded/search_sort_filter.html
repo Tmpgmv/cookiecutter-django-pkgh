@@ -68,11 +68,11 @@ search-sort-filter.js.
                         {{ field }}
                     </div>
                 {% endfor %}
-                <button class="btn btn-primary" type="submit">{% bs_icon 'search' %}</button>
+                <button id="search-sort-filter-button" class="btn btn-primary" type="submit">{% bs_icon 'search' %}</button>
             </form>            
         </div>
         <div class="ms-2">
-            <a href="{% url 'home' %}" class="text-danger">{% bs_icon 'x-circle' %}</a>
+            <a id="search-sort-filter-cancel" href="{% url 'home' %}" class="text-danger">{% bs_icon 'x-circle' %}</a>
         </div>
     </div>
 </div>
